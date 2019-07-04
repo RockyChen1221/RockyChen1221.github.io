@@ -17,7 +17,7 @@ title: "Hello. rockychen."
 email: 'rockychen1221@163.com'
 description: "Better late than never"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://rockychen1221.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://rockychen1221.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: 'rockychen1221'
 
 # Build settings
