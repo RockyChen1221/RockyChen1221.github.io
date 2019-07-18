@@ -17,14 +17,9 @@
             <div class="break"></div>
 
             {% for post in paginator.posts %}
-              <div class="wow fadeIn">
-              {% if post.position == "left" %}
-                {% include content-left.html %}
-              {% endif %}
-
-              {% if post.position == "right" %}
-                {% include content-right.html %}
-              {% endif %}
+              <div class="wow fadeIn div-content">
+              
+              {% include content-main.html %}
               </div>
             {% endfor %}
 

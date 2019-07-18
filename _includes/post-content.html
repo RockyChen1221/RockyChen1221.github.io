@@ -7,30 +7,21 @@
   <a href="{{ post.project_link }}" class="project-link"><button class="btn btn-default btn-lg"><i class="fa fa-{{post.button_icon}} fa-lg"></i>{{post.button_text}}</button></a>
   {% endif %}
 
+<div class="row">
   {% if post.tags != empty %}
-  <div class="tags">
+  <div class="tags col-md-10">
     {% for tag in post.tags %}
     <span>{{ tag }}</span>
     {% endfor %}
   </div>
+
   {% endif %}
+  <div class="categories col-md-2"><span>{{ post.date | date: '%Y, %b %d' }}</span></div>
+
+</div>
+  
 
 
-  <div class="post-content visible">
-    {% if page.subtitle %}
-    <h2 class="post-subtitle">{{ page.subtitle }}</h2>
-    {% endif %}
-
-    <article class="markdown-body">
-      {{ page.content }}
-    </article>
-
-    {% if site.social-share %}
-    <div class="social-share-wrapper">
-      <div class="social-share"></div>
-    </div>
-    {% endif %}
-  </div>
 
   <!-- {% if post.categories != empty %}
   <div class="categories">
@@ -40,5 +31,4 @@
   </div>
   {% endif %} -->
 
-  <div class="categories"><span>{{ post.date | date: '%Y, %b %d' }}</span></div>
 </div>

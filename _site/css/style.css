@@ -6010,7 +6010,7 @@ button.btn, input.btn {
       width: 60%; } }
 
 .content-wrap {
-  margin-bottom: 5em; }
+  margin-bottom: 0em; }
   @media only screen and (max-width: 768px) {
     .content-wrap {
       margin-bottom: 2em; } }
@@ -6024,7 +6024,7 @@ button.btn, input.btn {
     .content-wrap img.img-responsive {
       display: none; } }
   .content-wrap .content {
-    margin-top: 5em;
+    margin-top: 0em;
     margin-left: 5em; }
     @media only screen and (max-width: 768px) {
       .content-wrap .content {
@@ -6051,7 +6051,7 @@ button.btn, input.btn {
       margin-bottom: 1em;
       margin-top: 1em; }
     .content-wrap .content .tags, .content-wrap .content .categories {
-      margin: 2em 0; }
+      margin: 1em 0; }
       .content-wrap .content .tags span, .content-wrap .content .categories span {
         color: #9eb1bd;
         background-color: #ECEFF1;
@@ -6061,6 +6061,10 @@ button.btn, input.btn {
     .content-wrap .content .categories span {
       color: #b9b1ad;
       background-color: #EFEBE9; }
+
+.div-content {
+  border: 1px solid #cedfea;
+  margin-bottom: 1em; }
 
 /*--------------------------------------------------------------
 	4.0 Footer
