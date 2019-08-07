@@ -1,0 +1,250 @@
+<!doctype html>
+<head>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+
+  <title>Maven简介/使用 - Hello. rockychen.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="Hello. rockychen. - Better late than never" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="Hello. rockychen. - Better late than never" href="http://localhost:4000/atom.xml">
+
+  <!-- Favicons -->
+  <link rel="icon" href="http://localhost:4000/img/favicon.png">
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700|Merriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/animate.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="">
+
+<div class="main container" id="top">
+
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">rockychen</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+                <li>
+                  <a href="/">Home</a>
+                </li>
+              
+                <li>
+                  <a href="/about">About</a>
+                </li>
+              
+            </ul>
+          </div>
+      </div>
+  </nav>
+  
+
+
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          <p>/*
+Sort: 1
+*/</p>
+
+<p>参考：</p>
+<blockquote>
+  <p><a href="http://blog.csdn.net/longyulu/article/details/8128954">http://blog.csdn.net/longyulu/article/details/8128954</a></p>
+</blockquote>
+
+<h3 id="maven是什么">Maven是什么？</h3>
+<p>Maven是一个项目管理和综合工具。Maven提供了开发人员构建一个完整的生命周期框架。开发团队可以自动完成项目的基础工具建设，Maven使用标准的目录结构和默认构建生命周期。</p>
+
+<p>在多个开发团队环境时，Maven可以设置按标准在非常短的时间里完成配置工作。由于大部分项目的设置都很简单，并且可重复使用，Maven让开发人员的工作更轻松，同时创建报表，检查，构建和测试自动化设置。</p>
+
+<p>Maven提供了开发人员的方式来管理：</p>
+
+<ol>
+  <li>版本 &lt;/br&gt;
+ maven有自己的版本定义和规则</li>
+  <li>构建 &lt;/br&gt;
+ maven支持许多种的应用程序类型，对于每一种支持的应用程序类型都定义好了一组构建规则和工具集。</li>
+  <li>输出物管理 &lt;/br&gt;
+ maven可以管理项目构建的产物，并将其加入到用户库中。这个功能可以用于项目组和其他部门之间的交付行为。</li>
+  <li>依赖关系 &lt;/br&gt;
+ maven对依赖关系的特性进行细致的分析和划分，避免开发过程中的依赖混乱和相互污染行为</li>
+  <li>文档和构建结果 &lt;/br&gt;
+ maven的site命令支持各种文档信息的发布，包括构建过程的各种输出，javadoc，产品文档等。</li>
+  <li>项目关系 &lt;/br&gt;
+ 一个大型的项目通常有几个小项目或者模块组成，用maven可以很方便地管理</li>
+  <li>移植性管理 &lt;/br&gt;
+ maven可以针对不同的开发场景，输出不同种类的输出结果。</li>
+</ol>
+
+<p>概括地说，Maven简化和标准化项目建设过程。处理编译，分配，文档，团队协作和其他任务的无缝连接。 Maven增加可重用性并负责建立相关的任务。</p>
+
+<h3 id="maven的约定优于配置">Maven的“约定优于配置”</h3>
+<p>所谓的”约定优于配置”，在maven中并不是完全不可以修改的，他们只是一些配置的默认值而已。但是使用者除非必要，并不需要去修改那些约定内容。maven默认的文件存放结构如下：&lt;/br&gt;</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/项目目录
+pom.xml 用于maven的配置文件
+/src 源代码目录
+/src/main 工程源代码目录
+/src/main/java 工程java源代码目录
+/src/main/resource 工程的资源目录
+/src/test 单元测试目录
+/src/test/java
+/target 输出目录，所有的输出物都存放在这个目录下
+/target/classes 编译之后的class文件
+</code></pre></div></div>
+<p>每一个阶段的任务都知道怎么正确完成自己的工作，比如compile任务就知道从src/main/java下编译所有的java文件，并把它的输出class文件存放到target/classes中。&lt;/br&gt;
+对maven来说，采用”约定优于配置”的策略可以减少修改配置的工作量，也可以降低学习成本，更重要的是，给项目引入了统一的规范。</p>
+
+<h3 id="maven-版本规范">Maven 版本规范</h3>
+<p>maven使用如下几个要素来唯一定位某一个输出物： groupId:artifactId:packaging:version 。比如 <code class="highlighter-rouge">org.springframework:spring:2.5</code> 。每个部分的解释如下：</p>
+
+<ul>
+  <li>groupId &lt;/br&gt;
+  团体，公司，小组，组织，项目，或者其它团体。团体标识的约定是，它以创建这个项目的组织名称的逆向域名(reverse domain name)开头。来自Sonatype的项目有一个以com.sonatype开头的groupId，而Apache Software的项目有以org.apache开头的groupId。&lt;/br&gt;</li>
+  <li>artifactId &lt;/br&gt;
+  在groupId下的表示一个单独项目的唯一标识符。比如我们的tomcat, commons等。不要在artifactId中包含点号(.)。&lt;/br&gt;</li>
+  <li>version &lt;/br&gt;
+  一个项目的特定版本。发布的项目有一个固定的版本标识来指向该项目的某一个特定的版本。而正在开发中的项目可以用一个特殊的标识，这种标识给版本加上一个”SNAPSHOT”的标记。虽然项目的打包格式也是Maven坐标的重要组成部分，但是它不是项目唯一标识符的一个部分。一个项目的 groupId:artifactId:version使之成为一个独一无二的项目；你不能同时有一个拥有同样的groupId, artifactId和version标识的项目。&lt;/br&gt;</li>
+  <li>packaging &lt;/br&gt;
+  项目的类型，默认是jar，描述了项目打包后的输出。类型为jar的项目产生一个JAR文件，类型为war的项目产生一个web应用。&lt;/br&gt;</li>
+  <li>classifier &lt;/br&gt;
+  很少使用的坐标，一般都可以忽略classifiers。如果你要发布同样的代码，但是由于技术原因需要生成两个单独的构件，你就要使用一个分类器（classifier）。例如，如果你想要构建两个单独的构件成JAR，一个使用Java 1.4编译器，另一个使用Java 6编译器，你就可以使用分类器来生成两个单独的JAR构件，它们有同样的groupId:artifactId:version组合。如果你的项目使用本地扩展类库，你可以使用分类器为每一个目标平台生成一个构件。分类器常用于打包构件的源码，JavaDoc或者二进制集合。</li>
+</ul>
+
+<p>maven有自己的版本规范，一般是如下定义 <code class="highlighter-rouge">&lt;major version&gt;.&lt;minor version&gt;.&lt;incremental version&gt;-&lt;qualifier&gt;</code> ，比如1.2.3-beta-01。要说明的是，maven自己判断版本的算法是major,minor,incremental部分用数字比较，qualifier部分用字符串比较，所以要小心 alpha-2和alpha-15的比较关系，最好用 alpha-02的格式。</p>
+
+<p>maven在版本管理时候可以使用几个特殊的字符串<strong>SNAPSHOT ,LATEST ,RELEASE</strong> 。比如”1.0-SNAPSHOT”。各个部分的含义和处理逻辑如下说明：</p>
+
+<ul>
+  <li>SNAPSHOT &lt;/br&gt;
+  如果一个版本包含字符串”SNAPSHOT”，Maven就会在安装或发布这个组件的时候将该符号展开为一个日期和时间值，转换为UTC时间。例如，”1.0-SNAPSHOT”会在2010年5月5日下午2点10分发布时候变成1.0-20100505-141000-1。
+  这个词只能用于开发过程中，因为一般来说，项目组都会频繁发布一些版本，最后实际发布的时候，会在这些snapshot版本中寻找一个稳定的，用于正式发布，比如1.4版本发布之前，就会有一系列的1.4-SNAPSHOT，而实际发布的1.4，也是从中拿出来的一个稳定版。</li>
+  <li>LATEST &lt;/br&gt;
+  指某个特定构件的最新发布，这个发布可能是一个发布版，也可能是一个snapshot版，具体看哪个时间最后。</li>
+  <li>RELEASE &lt;/br&gt;
+  指最后一个发布版。</li>
+</ul>
+
+<p>/*
+Sort: 2
+*/</p>
+
+<h4 id="常用命令">常用命令</h4>
+<ul>
+  <li>mvn archetype:generate  创建maven项目</li>
+  <li>mvn package     打包，上面已经介绍过了</li>
+  <li>mvn package -Prelease   打包，并生成部署用的包，比如deploy/*.tgz</li>
+  <li>mvn install     打包并安装到本地库</li>
+  <li>mvn eclipse:eclipse     生成eclipse项目文件</li>
+  <li>mvn eclipse:clean   清除eclipse项目文件</li>
+  <li>mvn site    生成项目相关信息的网站</li>
+</ul>
+
+<h4 id="mvn常用参数">mvn常用参数</h4>
+<ul>
+  <li>mvn -e    显示详细错误</li>
+  <li>mvn -U    强制更新snapshot类型的插件或依赖库（否则maven一天只会更新一次snapshot依赖）</li>
+  <li>mvn -o    运行offline模式，不联网更新依赖</li>
+  <li>mvn -N    仅在当前项目模块执行命令，关闭reactor</li>
+  <li>mvn -pl   module_name在指定模块上执行命令</li>
+  <li>mvn -ff   在递归执行命令过程中，一旦发生错误就直接退出</li>
+  <li>mvn -Dxxx=yyy 指定java全局属性</li>
+  <li>mvn -Pxxx 引用profile xxx</li>
+</ul>
+
+<h4 id="buile-lifecycle">Buile Lifecycle</h4>
+<ul>
+  <li>mvn test-compile   编译测试代码</li>
+  <li>mvn test  运行程序中的单元测试</li>
+  <li>mvn compile   编译项目</li>
+  <li>mvn package   打包，此时target目录下会出现maven-quickstart-1.0-SNAPSHOT.jar文件，即为打包后文件</li>
+  <li>mvn install   打包并安装到本地仓库，此时本机仓库会新增maven-quickstart-1.0-SNAPSHOT.jar文件。
+每个phase都可以作为goal，也可以联合，如之前介绍的mvn clean install</li>
+</ul>
+
+<h4 id="maven插件常用参数">maven插件常用参数</h4>
+<ul>
+  <li>mvn -Dwtpversion=2.0  指定maven版本</li>
+  <li>mvn -Dmaven.test.skip=true    如果命令包含了test phase，则忽略单元测试</li>
+  <li>mvn -DuserProp=filePath   指定用户自定义配置文件位置</li>
+  <li>mvn -DdownloadSources=true -Declipse.addVersionToProjectName=true eclipse:eclipse     生成eclipse项目文件，尝试从仓库下载源代码，并且生成的项目包含模块版本（注意如果使用公用POM，上述的开关缺省已打开）</li>
+</ul>
+
+<h4 id="maven简单故障排除">maven简单故障排除</h4>
+<ul>
+  <li>mvn -Dsurefire.useFile=false  如果执行单元测试出错，用该命令可以在console输出失败的单元测试及相关信息</li>
+  <li>set MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=256m  调大jvm内存和持久代，maven/jvm out of memory error</li>
+  <li>mvn -X maven log level    设定为debug在运行</li>
+  <li>mvndebug  运行jpda允许remote debug</li>
+  <li>mvn –help     这个就不说了。。</li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-2 col-md-offset-1">
+            <p class="text-muted text-left "><a href="http://localhost:4000">© 2019 rockychen</a></p>
+          </div>
+
+          <div class="col-xs-12 col-md-6 col-md-offset-2">
+            <a class="section-jump" href="#top">
+              <i class="fa fa-angle-up fa-3x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .main.container -->
+
+    <!-- JavaScript -->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/js/wow.min.js"></script>
+    <script src="http://localhost:4000/js/app.js"></script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', ' UA-9999999-99', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    </body>
+</html>
+

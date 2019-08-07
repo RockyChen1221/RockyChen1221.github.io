@@ -4,13 +4,155 @@
  <title>Hello. rockychen.</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-07-18T22:53:21+08:00</updated>
+ <updated>2019-08-07T20:12:04+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>rockychen</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Maven简介/使用</title>
+   <link href="http://localhost:4000/2019/08/06/maven.html"/>
+   <updated>2019-08-06T17:15:00+08:00</updated>
+   <id>http://localhost:4000/2019/08/06/maven</id>
+   <content type="html">&lt;p&gt;/*
+Sort: 1
+*/&lt;/p&gt;
+
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/longyulu/article/details/8128954&quot;&gt;http://blog.csdn.net/longyulu/article/details/8128954&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;maven是什么&quot;&gt;Maven是什么？&lt;/h3&gt;
+&lt;p&gt;Maven是一个项目管理和综合工具。Maven提供了开发人员构建一个完整的生命周期框架。开发团队可以自动完成项目的基础工具建设，Maven使用标准的目录结构和默认构建生命周期。&lt;/p&gt;
+
+&lt;p&gt;在多个开发团队环境时，Maven可以设置按标准在非常短的时间里完成配置工作。由于大部分项目的设置都很简单，并且可重复使用，Maven让开发人员的工作更轻松，同时创建报表，检查，构建和测试自动化设置。&lt;/p&gt;
+
+&lt;p&gt;Maven提供了开发人员的方式来管理：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;版本 &amp;lt;/br&amp;gt;
+ maven有自己的版本定义和规则&lt;/li&gt;
+  &lt;li&gt;构建 &amp;lt;/br&amp;gt;
+ maven支持许多种的应用程序类型，对于每一种支持的应用程序类型都定义好了一组构建规则和工具集。&lt;/li&gt;
+  &lt;li&gt;输出物管理 &amp;lt;/br&amp;gt;
+ maven可以管理项目构建的产物，并将其加入到用户库中。这个功能可以用于项目组和其他部门之间的交付行为。&lt;/li&gt;
+  &lt;li&gt;依赖关系 &amp;lt;/br&amp;gt;
+ maven对依赖关系的特性进行细致的分析和划分，避免开发过程中的依赖混乱和相互污染行为&lt;/li&gt;
+  &lt;li&gt;文档和构建结果 &amp;lt;/br&amp;gt;
+ maven的site命令支持各种文档信息的发布，包括构建过程的各种输出，javadoc，产品文档等。&lt;/li&gt;
+  &lt;li&gt;项目关系 &amp;lt;/br&amp;gt;
+ 一个大型的项目通常有几个小项目或者模块组成，用maven可以很方便地管理&lt;/li&gt;
+  &lt;li&gt;移植性管理 &amp;lt;/br&amp;gt;
+ maven可以针对不同的开发场景，输出不同种类的输出结果。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;概括地说，Maven简化和标准化项目建设过程。处理编译，分配，文档，团队协作和其他任务的无缝连接。 Maven增加可重用性并负责建立相关的任务。&lt;/p&gt;
+
+&lt;h3 id=&quot;maven的约定优于配置&quot;&gt;Maven的“约定优于配置”&lt;/h3&gt;
+&lt;p&gt;所谓的”约定优于配置”，在maven中并不是完全不可以修改的，他们只是一些配置的默认值而已。但是使用者除非必要，并不需要去修改那些约定内容。maven默认的文件存放结构如下：&amp;lt;/br&amp;gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/项目目录
+pom.xml 用于maven的配置文件
+/src 源代码目录
+/src/main 工程源代码目录
+/src/main/java 工程java源代码目录
+/src/main/resource 工程的资源目录
+/src/test 单元测试目录
+/src/test/java
+/target 输出目录，所有的输出物都存放在这个目录下
+/target/classes 编译之后的class文件
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;每一个阶段的任务都知道怎么正确完成自己的工作，比如compile任务就知道从src/main/java下编译所有的java文件，并把它的输出class文件存放到target/classes中。&amp;lt;/br&amp;gt;
+对maven来说，采用”约定优于配置”的策略可以减少修改配置的工作量，也可以降低学习成本，更重要的是，给项目引入了统一的规范。&lt;/p&gt;
+
+&lt;h3 id=&quot;maven-版本规范&quot;&gt;Maven 版本规范&lt;/h3&gt;
+&lt;p&gt;maven使用如下几个要素来唯一定位某一个输出物： groupId:artifactId:packaging:version 。比如 &lt;code class=&quot;highlighter-rouge&quot;&gt;org.springframework:spring:2.5&lt;/code&gt; 。每个部分的解释如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;groupId &amp;lt;/br&amp;gt;
+  团体，公司，小组，组织，项目，或者其它团体。团体标识的约定是，它以创建这个项目的组织名称的逆向域名(reverse domain name)开头。来自Sonatype的项目有一个以com.sonatype开头的groupId，而Apache Software的项目有以org.apache开头的groupId。&amp;lt;/br&amp;gt;&lt;/li&gt;
+  &lt;li&gt;artifactId &amp;lt;/br&amp;gt;
+  在groupId下的表示一个单独项目的唯一标识符。比如我们的tomcat, commons等。不要在artifactId中包含点号(.)。&amp;lt;/br&amp;gt;&lt;/li&gt;
+  &lt;li&gt;version &amp;lt;/br&amp;gt;
+  一个项目的特定版本。发布的项目有一个固定的版本标识来指向该项目的某一个特定的版本。而正在开发中的项目可以用一个特殊的标识，这种标识给版本加上一个”SNAPSHOT”的标记。虽然项目的打包格式也是Maven坐标的重要组成部分，但是它不是项目唯一标识符的一个部分。一个项目的 groupId:artifactId:version使之成为一个独一无二的项目；你不能同时有一个拥有同样的groupId, artifactId和version标识的项目。&amp;lt;/br&amp;gt;&lt;/li&gt;
+  &lt;li&gt;packaging &amp;lt;/br&amp;gt;
+  项目的类型，默认是jar，描述了项目打包后的输出。类型为jar的项目产生一个JAR文件，类型为war的项目产生一个web应用。&amp;lt;/br&amp;gt;&lt;/li&gt;
+  &lt;li&gt;classifier &amp;lt;/br&amp;gt;
+  很少使用的坐标，一般都可以忽略classifiers。如果你要发布同样的代码，但是由于技术原因需要生成两个单独的构件，你就要使用一个分类器（classifier）。例如，如果你想要构建两个单独的构件成JAR，一个使用Java 1.4编译器，另一个使用Java 6编译器，你就可以使用分类器来生成两个单独的JAR构件，它们有同样的groupId:artifactId:version组合。如果你的项目使用本地扩展类库，你可以使用分类器为每一个目标平台生成一个构件。分类器常用于打包构件的源码，JavaDoc或者二进制集合。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;maven有自己的版本规范，一般是如下定义 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;major version&amp;gt;.&amp;lt;minor version&amp;gt;.&amp;lt;incremental version&amp;gt;-&amp;lt;qualifier&amp;gt;&lt;/code&gt; ，比如1.2.3-beta-01。要说明的是，maven自己判断版本的算法是major,minor,incremental部分用数字比较，qualifier部分用字符串比较，所以要小心 alpha-2和alpha-15的比较关系，最好用 alpha-02的格式。&lt;/p&gt;
+
+&lt;p&gt;maven在版本管理时候可以使用几个特殊的字符串&lt;strong&gt;SNAPSHOT ,LATEST ,RELEASE&lt;/strong&gt; 。比如”1.0-SNAPSHOT”。各个部分的含义和处理逻辑如下说明：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SNAPSHOT &amp;lt;/br&amp;gt;
+  如果一个版本包含字符串”SNAPSHOT”，Maven就会在安装或发布这个组件的时候将该符号展开为一个日期和时间值，转换为UTC时间。例如，”1.0-SNAPSHOT”会在2010年5月5日下午2点10分发布时候变成1.0-20100505-141000-1。
+  这个词只能用于开发过程中，因为一般来说，项目组都会频繁发布一些版本，最后实际发布的时候，会在这些snapshot版本中寻找一个稳定的，用于正式发布，比如1.4版本发布之前，就会有一系列的1.4-SNAPSHOT，而实际发布的1.4，也是从中拿出来的一个稳定版。&lt;/li&gt;
+  &lt;li&gt;LATEST &amp;lt;/br&amp;gt;
+  指某个特定构件的最新发布，这个发布可能是一个发布版，也可能是一个snapshot版，具体看哪个时间最后。&lt;/li&gt;
+  &lt;li&gt;RELEASE &amp;lt;/br&amp;gt;
+  指最后一个发布版。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;/*
+Sort: 2
+*/&lt;/p&gt;
+
+&lt;h4 id=&quot;常用命令&quot;&gt;常用命令&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;mvn archetype:generate  创建maven项目&lt;/li&gt;
+  &lt;li&gt;mvn package     打包，上面已经介绍过了&lt;/li&gt;
+  &lt;li&gt;mvn package -Prelease   打包，并生成部署用的包，比如deploy/*.tgz&lt;/li&gt;
+  &lt;li&gt;mvn install     打包并安装到本地库&lt;/li&gt;
+  &lt;li&gt;mvn eclipse:eclipse     生成eclipse项目文件&lt;/li&gt;
+  &lt;li&gt;mvn eclipse:clean   清除eclipse项目文件&lt;/li&gt;
+  &lt;li&gt;mvn site    生成项目相关信息的网站&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;mvn常用参数&quot;&gt;mvn常用参数&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;mvn -e    显示详细错误&lt;/li&gt;
+  &lt;li&gt;mvn -U    强制更新snapshot类型的插件或依赖库（否则maven一天只会更新一次snapshot依赖）&lt;/li&gt;
+  &lt;li&gt;mvn -o    运行offline模式，不联网更新依赖&lt;/li&gt;
+  &lt;li&gt;mvn -N    仅在当前项目模块执行命令，关闭reactor&lt;/li&gt;
+  &lt;li&gt;mvn -pl   module_name在指定模块上执行命令&lt;/li&gt;
+  &lt;li&gt;mvn -ff   在递归执行命令过程中，一旦发生错误就直接退出&lt;/li&gt;
+  &lt;li&gt;mvn -Dxxx=yyy 指定java全局属性&lt;/li&gt;
+  &lt;li&gt;mvn -Pxxx 引用profile xxx&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;buile-lifecycle&quot;&gt;Buile Lifecycle&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;mvn test-compile   编译测试代码&lt;/li&gt;
+  &lt;li&gt;mvn test  运行程序中的单元测试&lt;/li&gt;
+  &lt;li&gt;mvn compile   编译项目&lt;/li&gt;
+  &lt;li&gt;mvn package   打包，此时target目录下会出现maven-quickstart-1.0-SNAPSHOT.jar文件，即为打包后文件&lt;/li&gt;
+  &lt;li&gt;mvn install   打包并安装到本地仓库，此时本机仓库会新增maven-quickstart-1.0-SNAPSHOT.jar文件。
+每个phase都可以作为goal，也可以联合，如之前介绍的mvn clean install&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;maven插件常用参数&quot;&gt;maven插件常用参数&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;mvn -Dwtpversion=2.0  指定maven版本&lt;/li&gt;
+  &lt;li&gt;mvn -Dmaven.test.skip=true    如果命令包含了test phase，则忽略单元测试&lt;/li&gt;
+  &lt;li&gt;mvn -DuserProp=filePath   指定用户自定义配置文件位置&lt;/li&gt;
+  &lt;li&gt;mvn -DdownloadSources=true -Declipse.addVersionToProjectName=true eclipse:eclipse     生成eclipse项目文件，尝试从仓库下载源代码，并且生成的项目包含模块版本（注意如果使用公用POM，上述的开关缺省已打开）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;maven简单故障排除&quot;&gt;maven简单故障排除&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;mvn -Dsurefire.useFile=false  如果执行单元测试出错，用该命令可以在console输出失败的单元测试及相关信息&lt;/li&gt;
+  &lt;li&gt;set MAVEN_OPTS=-Xmx512m -XX:MaxPermSize=256m  调大jvm内存和持久代，maven/jvm out of memory error&lt;/li&gt;
+  &lt;li&gt;mvn -X maven log level    设定为debug在运行&lt;/li&gt;
+  &lt;li&gt;mvndebug  运行jpda允许remote debug&lt;/li&gt;
+  &lt;li&gt;mvn –help     这个就不说了。。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Git</title>
@@ -60,131 +202,6 @@
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; dev //dev 为检出分支名称
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-</content>
- </entry>
- 
- <entry>
-   <title>Bloc Jams Angular</title>
-   <link href="http://localhost:4000/2016/02/20/bloc-jams-angular.html"/>
-   <updated>2016-02-20T22:15:00+08:00</updated>
-   <id>http://localhost:4000/2016/02/20/bloc-jams-angular</id>
-   <content type="html">&lt;p&gt;正如我在&lt;a href=&quot;http://weibo.com/1374146504/profile?topnav=1&amp;amp;wvr=6&quot;&gt;微博&lt;/a&gt;上所说的，使用&lt;a href=&quot;http://jekyll.com.cn/&quot;&gt;Jekyll&lt;/a&gt;半年以来一直没有令我满意的主题模板，所以开始计划自己写一套好看又好用的主题模板。设计之初就明确了极简主义，风格采用扁平化了，通过卡片式设计来进行区块分明的布局，参考了Medium的ui样式和知乎专栏的视觉风格。&lt;/p&gt;
-
-&lt;h2 id=&quot;h2o&quot;&gt;H2O&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/kaeyleo/jekyll-theme-H2O&quot;&gt;源码及使用文档 →&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-realhome.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;新主题名叫”H2O”，基于Jekyll 3.0.x（使用&lt;code class=&quot;highlighter-rouge&quot;&gt;gem update jekyll&lt;/code&gt;升级Jekyll），Markdown的代码高亮不再支持pygments转而使用rouge，咱已经默认配置了 &lt;code class=&quot;highlighter-rouge&quot;&gt;highlighter: rouge&lt;/code&gt; 。用到的技术栈也很简单：引入jQuery类库，使用Sass编写样式，使用Gulp来编译Sass、合并压缩css、js，开源在&lt;a href=&quot;https://github.com/kaeyleo/jekyll-theme-H2O&quot;&gt;Github&lt;/a&gt;上，稍作配置即可用于你的Jekyll博客上。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-sketchdesign.png&quot; alt=&quot;Design with Sketch&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;使用Sketch完成H2O主题的原型设计&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-vs.jpg&quot; alt=&quot;My Jekyll themes&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;比之前漂亮不少吧，下面聊聊H2O的新特性。&lt;/p&gt;
-
-&lt;h2 id=&quot;新特性&quot;&gt;新特性&lt;/h2&gt;
-
-&lt;h3 id=&quot;主题配色&quot;&gt;主题配色&lt;/h3&gt;
-
-&lt;p&gt;支持两种主题配色——蓝色和粉色。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://github.com/kaeyleo/jekyll-theme-H2O/blob/master/screenshot/jekyll-theme-h2o-themecolor.jpg?raw=true&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;侧边栏&quot;&gt;侧边栏&lt;/h3&gt;
-
-&lt;p&gt;相比自己上一个版本的博客主题，首页增加了侧边栏，方便展示博主的个人信息和文章标签。&lt;/p&gt;
-
-&lt;h3 id=&quot;社交图标&quot;&gt;社交图标&lt;/h3&gt;
-
-&lt;p&gt;使用阿里的图标管理平台&lt;a href=&quot;http://iconfont.cn/&quot;&gt;Iconfont&lt;/a&gt;整理了一套&lt;strike&gt;墙内外&lt;/strike&gt;常用的社交图标，包括微博、知乎、掘金、简书、Github等十多个网站，鼠标悬停会显示该站的主题色。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-snstext.jpg&quot; alt=&quot;social iconfont&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;前后文导航&quot;&gt;前后文导航&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-nextpostnav.png&quot; alt=&quot;Next post navigator&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;自定义文章封面&quot;&gt;自定义文章封面&lt;/h3&gt;
-
-&lt;p&gt;在Markdown的&lt;a href=&quot;http://jekyll.com.cn/docs/frontmatter/&quot;&gt;文章头信息&lt;/a&gt;里添加cover参数来配置文章的封面图片，如果没有配置封面，则默认【主题色+底纹】的组合作为文章封面。值得一提的是，H2O有两种（粉、蓝）主题色和六种底纹（电路板、食物、云海、钻石等等）供你选择。&lt;/p&gt;
-
-&lt;h3 id=&quot;头图个性化底纹&quot;&gt;头图个性化底纹&lt;/h3&gt;
-
-&lt;p&gt;在没有图片的情况下单纯显示颜色会不会太无趣了点？于是想到了加入底纹元素，底纹素材是SVG格式的（保存在css样式里），加载比图片快很多。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-headerpatterns.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;代码高亮&quot;&gt;代码高亮&lt;/h3&gt;
-
-&lt;p&gt;模板引入了&lt;a href=&quot;http://prismjs.com&quot;&gt;Prism.js&lt;/a&gt;，一款轻量、可扩展的代码语法高亮库。&lt;/p&gt;
-
-&lt;p&gt;很多知名网站如&lt;a href=&quot;https://developer.mozilla.org/&quot;&gt;MDN&lt;/a&gt;、&lt;a href=&quot;https://css-tricks.com/&quot;&gt;css-tricks&lt;/a&gt;也在用它，JavaScript 之父 &lt;a href=&quot;https://brendaneich.com/&quot;&gt;Brendan Eich&lt;/a&gt; 也在个人博客上使用。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-highlight.png&quot; alt=&quot;代码高亮&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;遵循 &lt;a href=&quot;https://www.w3.org/TR/html5/grouping-content.html#the-pre-element&quot;&gt;HTML5&lt;/a&gt; 标准，Prism 使用语义化的 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; 元素和 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;code&amp;gt;&lt;/code&gt; 元素来标记代码区块：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pre&amp;gt;&amp;lt;code class=&quot;language-css&quot;&amp;gt;p { color: red }&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在Markdown中你可以这样写：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ```css
-	p { color: red }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;```&lt;/p&gt;
-
-&lt;p&gt;支持语言：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HTML&lt;/li&gt;
-  &lt;li&gt;CSS&lt;/li&gt;
-  &lt;li&gt;Sass&lt;/li&gt;
-  &lt;li&gt;JavaScript&lt;/li&gt;
-  &lt;li&gt;CoffeeScript&lt;/li&gt;
-  &lt;li&gt;Java&lt;/li&gt;
-  &lt;li&gt;C-like&lt;/li&gt;
-  &lt;li&gt;Swift&lt;/li&gt;
-  &lt;li&gt;PHP&lt;/li&gt;
-  &lt;li&gt;Go&lt;/li&gt;
-  &lt;li&gt;Python&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;第三方评论&quot;&gt;第三方评论&lt;/h3&gt;
-
-&lt;p&gt;由于多说关闭，又对国内其他第三方评论插件无感，所以将&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;列为首选（目前模板也只提供了这个），请自备梯子。&lt;/p&gt;
-
-&lt;h3 id=&quot;移动端优化&quot;&gt;移动端优化&lt;/h3&gt;
-
-&lt;p&gt;响应式设计，对手机和平板等移动设备做了优化。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-realm.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;关于阅读体验&quot;&gt;关于阅读体验&lt;/h3&gt;
-
-&lt;p&gt;我认为在内容质量相同的情况下，出色的沉浸式阅读体验是博客的核心。&lt;/p&gt;
-
-&lt;p&gt;H2O在这方面还有很多需要完善的地方，比如：&lt;strike&gt;代码高亮&lt;/strike&gt;、夜间模式、查看大图…&lt;/p&gt;
-
-&lt;h3 id=&quot;其他特性&quot;&gt;其他特性：&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;网页标题SEO优化&lt;/li&gt;
-  &lt;li&gt;标签索引，点击标签跳转到标签目录，即可查看对应的全部文章&lt;/li&gt;
-  &lt;li&gt;漂亮&lt;/li&gt;
-  &lt;li&gt;好看&lt;/li&gt;
-  &lt;li&gt;美&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;最后&quot;&gt;最后&lt;/h2&gt;
-
-&lt;p&gt;本想趁这次机会将整站https化的，但折腾了半天发现弹性web托管并不支持，所以暂时搁置https的想法。另外，博客统计工具一直使用的是&lt;a href=&quot;https://tongji.baidu.com&quot;&gt;百度统计&lt;/a&gt;，这次新增了Google Analytics。&lt;/p&gt;
-
-&lt;p&gt;这次从0到1，独自设计、开发再到发布大约用了一周时间，也算完成一个小小的开源项目了，后续也将持续完善和更新，欢迎&lt;a href=&quot;https://github.com/kaeyleo/jekyll-theme-H2O&quot;&gt;Star&lt;/a&gt;。&lt;/p&gt;
 </content>
  </entry>
  
