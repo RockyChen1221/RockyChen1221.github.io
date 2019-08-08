@@ -39,4 +39,5 @@ permalink: /:year/:month/:day/:title.html
 enable_nav: true
 nav_item:
   - { url: '/', text: 'Home' }
+  - { url: '/books', text: 'Books' }
   - { url: '/about', text: 'About' }
