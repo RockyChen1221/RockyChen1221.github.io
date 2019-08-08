@@ -49,7 +49,6 @@ permalink: /about/
 
 - 3年以上工作经验
 - 熟练jsp，servlet，ajax,jqeury,div+css ,html等web常用技术
-- JAVA基础扎实，理解io、多线程、集合等基础框架，对JVM原理有一定的了解，看过部分源码
 - ssi（strut2,spring,ibaties）实际运用和应用设计经验，熟悉spingmvc,mybatis等开源框架，看过部分源码
 - 熟练使用Oracle/Mysql等数据库软件；
 - 熟悉linux常用指令和应用部署环境准备，日常工作使用过windows,ubuntu，目前使用Mac OS X/Linux系统；

@@ -22,7 +22,7 @@ permalink: /books/
 ### 计划
    - Head First 设计模式
    - 深入理解Java虚拟机（JVM高级特性与最佳实践）第2版
-   - Java并发编程
+   - Java并发编程实战
    - Spring源码深度解析
    - Spring in Action 第四版
    - 追风筝的人
