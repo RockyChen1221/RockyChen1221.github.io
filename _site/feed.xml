@@ -5,9 +5,182 @@
     <description>Better late than never</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 08 Aug 2019 23:54:25 +0800</pubDate>
-    <lastBuildDate>Thu, 08 Aug 2019 23:54:25 +0800</lastBuildDate>
+    <pubDate>Wed, 21 Aug 2019 23:47:59 +0800</pubDate>
+    <lastBuildDate>Wed, 21 Aug 2019 23:47:59 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>初识ElasticSearch（Mac）</title>
+        <description>&lt;h1 id=&quot;初识elasticsearchmac&quot;&gt;初识ElasticSearch（Mac）&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-简介&quot;&gt;1. 简介&lt;/h2&gt;
+
+&lt;p&gt;ElasticSearch是一个基于&lt;a href=&quot;https://baike.baidu.com/item/Lucene/6753302&quot;&gt;Lucene&lt;/a&gt;的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于&lt;a href=&quot;https://baike.baidu.com/item/云计算/9969353&quot;&gt;云计算&lt;/a&gt;中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。&lt;/p&gt;
+
+&lt;h3 id=&quot;11-elk是什么&quot;&gt;1.1 ELK是什么&lt;/h3&gt;
+
+&lt;p&gt;ELK=elasticsearch+Logstash+kibana 
+elasticsearch：后台分布式存储以及全文检索 
+logstash: 日志加工、“搬运工” 
+kibana：数据可视化展示。 
+ELK架构为数据分布式存储、可视化查询和日志解析创建了一个功能强大的管理链。 三者相互配合，取长补短，共同完成分布式大数据处理工作。&lt;/p&gt;
+
+&lt;h3 id=&quot;12-前置条件&quot;&gt;1.2 前置条件&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ES 5，安装需要 JDK 8 以上&lt;/li&gt;
+  &lt;li&gt;ES 6.5，安装需要 JDK 11 以上&lt;/li&gt;
+  &lt;li&gt;ES 7.2.1，内置了 JDK 12&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-brew安装&quot;&gt;2. Brew安装&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;elasticsearch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;安装成功后会出现如下目录结构&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; /usr/local/Cellar/elasticsearch/6.8.1/bin/elasticsearch-keystore create
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Caveats
+Data:    /usr/local/var/lib/elasticsearch/
+Logs:    /usr/local/var/log/elasticsearch/elasticsearch_datadriver.log
+Plugins: /usr/local/var/elasticsearch/plugins/
+Config:  /usr/local/etc/elasticsearch/
+
+To have launchd start elasticsearch now and restart at login:
+  brew services start elasticsearch
+Or, &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;you don&lt;span class=&quot;s1&quot;&gt;'t want/need a background service you can just run:
+  elasticsearch
+==&amp;gt; Summary
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;elasticsearch --version&lt;/code&gt;查看当前版本&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Java HotSpot&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;TM&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 64-Bit Server VM warning: Cannot open file logs/gc.log due to No such file or directory
+
+Version: 6.8.1, Build: oss/tar/1fad4e1/2019-06-18T13:16:52.517138Z, JVM: 1.8.0_211
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;启动 &lt;code class=&quot;highlighter-rouge&quot;&gt;elasticsearch&lt;/code&gt;，默认端口是9200，http://127.0.0.1:9200/ 看到ES的基本信息&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;YtPiknS&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;cluster_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;elasticsearch_datadriver&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;cluster_uuid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;eeXuM5z_T7KNk_QZgatJNQ&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;6.8.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build_flavor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;oss&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build_type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build_hash&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1fad4e1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build_date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-06-18T13:16:52.517138Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build_snapshot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;lucene_version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;7.7.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;minimum_wire_compatibility_version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;5.6.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;minimum_index_compatibility_version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;5.0.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tagline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;You Know, for Search&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3-安装kibana&quot;&gt;3. 安装Kibana&lt;/h2&gt;
+
+&lt;p&gt;Kibana是ES的一个配套工具，让用户在网页中可以直接与ES进行交互。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;kibana //安装
+kibana //启动 默认端口5601
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;启动成功后 http://localhost:5601&lt;/p&gt;
+
+&lt;h2 id=&quot;4-安装head&quot;&gt;4. 安装Head&lt;/h2&gt;
+
+&lt;p&gt;4.1.  下载&lt;a href=&quot;https://github.com/mobz/elasticsearch-head#running-with-built-in-server&quot;&gt;github下载地址&lt;/a&gt;  注：需要node环境&lt;/p&gt;
+
+&lt;p&gt;4.2.  &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run start &lt;/code&gt;启动 ，默认地址为&lt;code class=&quot;highlighter-rouge&quot;&gt;locahost:9100&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;4.3.  建立和ES的关联，修改&lt;code class=&quot;highlighter-rouge&quot;&gt;config/elasticsearch.yml&lt;/code&gt;，添加&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# head plugins&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;http.cors.enabled&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;http.cors.allow-origin&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4.4. 建立集群，编辑&lt;code class=&quot;highlighter-rouge&quot;&gt;config/elasticsearch.yml&lt;/code&gt;，添加&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cluster.name: XXX  //集群名称
+node.name: master  //节点名称
+node.master: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;  //是否master节点
+
+network.host: 127.0.0.1 //绑定的IP地址，端口默认是9200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Window+Mac 集群配置&lt;/p&gt;
+
+&lt;p&gt;4.4.1. Windows (IP: 192.168.0.105)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/windows_yml.jpg&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/windows_logs.png&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/windows.png&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/windows_nodes.png&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.4.2. Mac (IP: 192.168.0.101)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/mac_yml.png&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/mac_logs.png&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/mac.png&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/es/mac_nodes.png&quot; alt=&quot;image-total&quot; height=&quot;400&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;5-踩坑&quot;&gt;5 .踩坑&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Error: Caused by: java.lang.IllegalStateException: failed to obtain node locks
+ 绑定节点失败，原因由ES未正常关闭引起所致，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;ps aux | grep 'elastic' &lt;/code&gt; 查找对应进程，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;kill -9 进程号&lt;/code&gt; 结束进程，或者使用&lt;code class=&quot;highlighter-rouge&quot;&gt;jps&lt;/code&gt; 查找，最后重新启动&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;max virtual memory areas vm.max&lt;em&gt;map&lt;/em&gt;count [65530] is too low&lt;/p&gt;
+
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sysctl &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; vm.max_map_count&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;262144
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]&lt;/p&gt;
+
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ulimit&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Hn&lt;/span&gt;  //查看硬限制大小
+su root     //切换root编辑
+vi /etc/security/limits.conf 
+//添加以下内容，其中&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;可设置为指定用户，ES从5开始不支持root用户启动，保存退出后重新 &lt;span class=&quot;nb&quot;&gt;ulimit&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Hn&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; soft nofile 65536
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; hard nofile 65536
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;6--参阅&quot;&gt;6.  参阅&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html&quot;&gt;阮一峰的网络日志&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/makang110/article/details/80596017&quot;&gt;Elasticsearch学习&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注：本文使用版本为5.6.16&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 21 Aug 2019 22:15:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/21/elasticsearch.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/21/elasticsearch.html</guid>
+        
+        <category>ElasticSearch</category>
+        
+        
+        <category>development</category>
+        
+      </item>
     
       <item>
         <title>Maven简介/使用</title>

@@ -1,0 +1,279 @@
+<!doctype html>
+<head>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+
+  <title>初识ElasticSearch（Mac） - NoteBook</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="NoteBook - Better late than never" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="NoteBook - Better late than never" href="http://localhost:4000/atom.xml">
+
+  <!-- Favicons -->
+  <link rel="icon" href="http://localhost:4000/img/favicon.png">
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700|Merriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/animate.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="">
+
+<div class="main container" id="top">
+
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">rockychen</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+                <li>
+                  <a href="/">Home</a>
+                </li>
+              
+                <li>
+                  <a href="/books">Books</a>
+                </li>
+              
+                <li>
+                  <a href="/about">About</a>
+                </li>
+              
+            </ul>
+          </div>
+      </div>
+  </nav>
+  
+
+
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          <h1 id="初识elasticsearchmac">初识ElasticSearch（Mac）</h1>
+
+<h2 id="1-简介">1. 简介</h2>
+
+<p>ElasticSearch是一个基于<a href="https://baike.baidu.com/item/Lucene/6753302">Lucene</a>的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于<a href="https://baike.baidu.com/item/云计算/9969353">云计算</a>中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。</p>
+
+<h3 id="11-elk是什么">1.1 ELK是什么</h3>
+
+<p>ELK=elasticsearch+Logstash+kibana 
+elasticsearch：后台分布式存储以及全文检索 
+logstash: 日志加工、“搬运工” 
+kibana：数据可视化展示。 
+ELK架构为数据分布式存储、可视化查询和日志解析创建了一个功能强大的管理链。 三者相互配合，取长补短，共同完成分布式大数据处理工作。</p>
+
+<h3 id="12-前置条件">1.2 前置条件</h3>
+
+<ul>
+  <li>ES 5，安装需要 JDK 8 以上</li>
+  <li>ES 6.5，安装需要 JDK 11 以上</li>
+  <li>ES 7.2.1，内置了 JDK 12</li>
+</ul>
+
+<h2 id="2-brew安装">2. Brew安装</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>elasticsearch
+</code></pre></div></div>
+
+<p>安装成功后会出现如下目录结构</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">==&gt;</span> /usr/local/Cellar/elasticsearch/6.8.1/bin/elasticsearch-keystore create
+<span class="o">==&gt;</span> Caveats
+Data:    /usr/local/var/lib/elasticsearch/
+Logs:    /usr/local/var/log/elasticsearch/elasticsearch_datadriver.log
+Plugins: /usr/local/var/elasticsearch/plugins/
+Config:  /usr/local/etc/elasticsearch/
+
+To have launchd start elasticsearch now and restart at login:
+  brew services start elasticsearch
+Or, <span class="k">if </span>you don<span class="s1">'t want/need a background service you can just run:
+  elasticsearch
+==&gt; Summary
+</span></code></pre></div></div>
+
+<p>使用<code class="highlighter-rouge">elasticsearch --version</code>查看当前版本</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM warning: Cannot open file logs/gc.log due to No such file or directory
+
+Version: 6.8.1, Build: oss/tar/1fad4e1/2019-06-18T13:16:52.517138Z, JVM: 1.8.0_211
+</code></pre></div></div>
+
+<p>启动 <code class="highlighter-rouge">elasticsearch</code>，默认端口是9200，http://127.0.0.1:9200/ 看到ES的基本信息</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YtPiknS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cluster_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"elasticsearch_datadriver"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cluster_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eeXuM5z_T7KNk_QZgatJNQ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.8.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"build_flavor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oss"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"build_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tar"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"build_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1fad4e1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"build_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-18T13:16:52.517138Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"build_snapshot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lucene_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.7.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimum_wire_compatibility_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.6.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimum_index_compatibility_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0.0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tagline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You Know, for Search"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="3-安装kibana">3. 安装Kibana</h2>
+
+<p>Kibana是ES的一个配套工具，让用户在网页中可以直接与ES进行交互。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>kibana //安装
+kibana //启动 默认端口5601
+</code></pre></div></div>
+
+<p>启动成功后 http://localhost:5601</p>
+
+<h2 id="4-安装head">4. 安装Head</h2>
+
+<p>4.1.  下载<a href="https://github.com/mobz/elasticsearch-head#running-with-built-in-server">github下载地址</a>  注：需要node环境</p>
+
+<p>4.2.  <code class="highlighter-rouge">npm run start </code>启动 ，默认地址为<code class="highlighter-rouge">locahost:9100</code></p>
+
+<p>4.3.  建立和ES的关联，修改<code class="highlighter-rouge">config/elasticsearch.yml</code>，添加</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># head plugins</span>
+<span class="s">http.cors.enabled</span><span class="pi">:</span> <span class="no">true</span>
+<span class="s">http.cors.allow-origin</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*"</span>
+</code></pre></div></div>
+
+<p>4.4. 建立集群，编辑<code class="highlighter-rouge">config/elasticsearch.yml</code>，添加</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cluster.name: XXX  //集群名称
+node.name: master  //节点名称
+node.master: <span class="nb">true</span>  //是否master节点
+
+network.host: 127.0.0.1 //绑定的IP地址，端口默认是9200
+</code></pre></div></div>
+
+<p>Window+Mac 集群配置</p>
+
+<p>4.4.1. Windows (IP: 192.168.0.105)</p>
+
+<p><img src="/img/posts/es/windows_yml.jpg" alt="image-total" height="auto" width="780" /></p>
+
+<p><img src="/img/posts/es/windows_logs.png" alt="image-total" height="auto" width="780" /></p>
+
+<p><img src="/img/posts/es/windows.png" alt="image-total" height="auto" width="780" /></p>
+
+<p><img src="/img/posts/es/windows_nodes.png" alt="image-total" height="auto" width="780" /></p>
+
+<p>4.4.2. Mac (IP: 192.168.0.101)</p>
+
+<p><img src="/img/posts/es/mac_yml.png" alt="image-total" height="auto" width="780" /></p>
+
+<p><img src="/img/posts/es/mac_logs.png" alt="image-total" height="auto" width="780" /></p>
+
+<p><img src="/img/posts/es/mac.png" alt="image-total" height="auto" width="780" /></p>
+
+<p><img src="/img/posts/es/mac_nodes.png" alt="image-total" height="400" width="780" /></p>
+
+<h2 id="5-踩坑">5 .踩坑</h2>
+
+<ol>
+  <li>
+    <p>Error: Caused by: java.lang.IllegalStateException: failed to obtain node locks
+ 绑定节点失败，原因由ES未正常关闭引起所致，通过<code class="highlighter-rouge">ps aux | grep 'elastic' </code> 查找对应进程，通过<code class="highlighter-rouge">kill -9 进程号</code> 结束进程，或者使用<code class="highlighter-rouge">jps</code> 查找，最后重新启动</p>
+  </li>
+  <li>
+    <p>max virtual memory areas vm.max<em>map</em>count [65530] is too low</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl <span class="nt">-w</span> vm.max_map_count<span class="o">=</span>262144
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ulimit</span> <span class="nt">-Hn</span>  //查看硬限制大小
+su root     //切换root编辑
+vi /etc/security/limits.conf 
+//添加以下内容，其中<span class="k">*</span>可设置为指定用户，ES从5开始不支持root用户启动，保存退出后重新 <span class="nb">ulimit</span> <span class="nt">-Hn</span>
+<span class="k">*</span> soft nofile 65536
+<span class="k">*</span> hard nofile 65536
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="6--参阅">6.  参阅</h2>
+
+<p><a href="http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">阮一峰的网络日志</a></p>
+
+<p><a href="https://blog.csdn.net/makang110/article/details/80596017">Elasticsearch学习</a></p>
+
+<p>注：本文使用版本为5.6.16</p>
+
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-2 col-md-offset-1">
+            <p class="text-muted text-left "><a href="http://localhost:4000">© 2019 rockychen</a></p>
+          </div>
+
+          <div class="col-xs-12 col-md-6 col-md-offset-2">
+            <a class="section-jump" href="#top">
+              <i class="fa fa-angle-up fa-3x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .main.container -->
+
+    <!-- JavaScript -->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/js/wow.min.js"></script>
+    <script src="http://localhost:4000/js/app.js"></script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', ' UA-9999999-99', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    </body>
+</html>
+
