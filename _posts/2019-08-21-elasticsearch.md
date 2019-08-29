@@ -19,7 +19,18 @@ lead_text: 'ElasticSearch 使用记录(持续更新...)'
 
 ElasticSearch是一个基于[Lucene](https://baike.baidu.com/item/Lucene/6753302)的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于[云计算](https://baike.baidu.com/item/云计算/9969353)中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。
 
-### 1.1 ELK是什么
+### 1.1 与MySQL的区别
+
+| ElasticSearch    | Mysql              |
+| ---------------- | ------------------ |
+| 索引（index）    | 数据库（database） |
+| 类型（type）     | 表（table）        |
+| 列（field）      | 属性/列（column）  |
+| 文档（document） | 数据（data）       |
+
+> 注意事项： 不建议使用type 因为按照elastic search的计划后面的版本7.0以后会移除type
+
+### 1.2 ELK是什么
 
 ELK=elasticsearch+Logstash+kibana 
 elasticsearch：后台分布式存储以及全文检索 
@@ -27,7 +38,7 @@ logstash: 日志加工、“搬运工”
 kibana：数据可视化展示。 
 ELK架构为数据分布式存储、可视化查询和日志解析创建了一个功能强大的管理链。 三者相互配合，取长补短，共同完成分布式大数据处理工作。
 
-### 1.2 前置条件
+### 1.3 前置条件
 
 - ES 5，安装需要 JDK 8 以上
 - ES 6.5，安装需要 JDK 11 以上
@@ -123,8 +134,7 @@ network.host: 127.0.0.1 //绑定的IP地址，端口默认是9200
 
 Window+Mac 集群配置
 
-4.4.1. Windows (IP: 192.168.0.105)
-
+4.4.1. Windows (IP: 192.168.0.105) (作为集群master)
 
 ![image-total](/img/posts/es/windows_yml.jpg){:height="auto" width="780"}
 
@@ -134,23 +144,15 @@ Window+Mac 集群配置
 
 ![image-total](/img/posts/es/windows_nodes.png){:height="auto" width="780"}
 
-
-
-4.4.2. Mac (IP: 192.168.0.101)
+4.4.2. Mac (IP: 192.168.0.101) 
 
 ![image-total](/img/posts/es/mac_yml.png){:height="auto" width="780"}
 
-
 ![image-total](/img/posts/es/mac_logs.png){:height="auto" width="780"}
-
 
 ![image-total](/img/posts/es/mac.png){:height="auto" width="780"}
 
-
 ![image-total](/img/posts/es/mac_nodes.png){:height="400" width="780"}
-
-
-
 
 ## 5 .踩坑
 
@@ -173,6 +175,7 @@ Window+Mac 集群配置
    * soft nofile 65536
    * hard nofile 65536
    ```
+4. 集群过程中机器需要双向互通
 
 ## 6.  参阅
 
@@ -180,7 +183,7 @@ Window+Mac 集群配置
 
 [Elasticsearch学习](https://blog.csdn.net/makang110/article/details/80596017)
 
-注：本文使用版本为5.6.16
+注：本文使用版本为5.6.16，上面安装使用的是6.8.1，后面实际使用的是5.6.16，考虑到版本问题以及jdk,所以和公司保持一致
 
 
 

@@ -65,18 +65,49 @@
   
 
 
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+  <article class="markdown-body entry-content p-3 p-md-6">
 
-          <h1 id="初识elasticsearchmac">初识ElasticSearch（Mac）</h1>
+
+	<h1 id="初识elasticsearchmac">初识ElasticSearch（Mac）</h1>
 
 <h2 id="1-简介">1. 简介</h2>
 
 <p>ElasticSearch是一个基于<a href="https://baike.baidu.com/item/Lucene/6753302">Lucene</a>的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于<a href="https://baike.baidu.com/item/云计算/9969353">云计算</a>中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。</p>
 
-<h3 id="11-elk是什么">1.1 ELK是什么</h3>
+<h3 id="11-与mysql的区别">1.1 与MySQL的区别</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ElasticSearch</th>
+      <th>Mysql</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>索引（index）</td>
+      <td>数据库（database）</td>
+    </tr>
+    <tr>
+      <td>类型（type）</td>
+      <td>表（table）</td>
+    </tr>
+    <tr>
+      <td>列（field）</td>
+      <td>属性/列（column）</td>
+    </tr>
+    <tr>
+      <td>文档（document）</td>
+      <td>数据（data）</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>注意事项： 不建议使用type 因为按照elastic search的计划后面的版本7.0以后会移除type</p>
+</blockquote>
+
+<h3 id="12-elk是什么">1.2 ELK是什么</h3>
 
 <p>ELK=elasticsearch+Logstash+kibana 
 elasticsearch：后台分布式存储以及全文检索 
@@ -84,7 +115,7 @@ logstash: 日志加工、“搬运工”
 kibana：数据可视化展示。 
 ELK架构为数据分布式存储、可视化查询和日志解析创建了一个功能强大的管理链。 三者相互配合，取长补短，共同完成分布式大数据处理工作。</p>
 
-<h3 id="12-前置条件">1.2 前置条件</h3>
+<h3 id="13-前置条件">1.3 前置条件</h3>
 
 <ul>
   <li>ES 5，安装需要 JDK 8 以上</li>
@@ -175,7 +206,7 @@ network.host: 127.0.0.1 //绑定的IP地址，端口默认是9200
 
 <p>Window+Mac 集群配置</p>
 
-<p>4.4.1. Windows (IP: 192.168.0.105)</p>
+<p>4.4.1. Windows (IP: 192.168.0.105) (作为集群master)</p>
 
 <p><img src="/img/posts/es/windows_yml.jpg" alt="image-total" height="auto" width="780" /></p>
 
@@ -219,6 +250,9 @@ vi /etc/security/limits.conf
 <span class="k">*</span> hard nofile 65536
 </code></pre></div>    </div>
   </li>
+  <li>
+    <p>集群过程中机器需要双向互通</p>
+  </li>
 </ol>
 
 <h2 id="6--参阅">6.  参阅</h2>
@@ -227,13 +261,19 @@ vi /etc/security/limits.conf
 
 <p><a href="https://blog.csdn.net/makang110/article/details/80596017">Elasticsearch学习</a></p>
 
-<p>注：本文使用版本为5.6.16</p>
+<p>注：本文使用版本为5.6.16，上面安装使用的是6.8.1，后面实际使用的是5.6.16，考虑到版本问题以及jdk,所以和公司保持一致</p>
 
 
+
+    <!--<div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          
 
         </div>
       </div>
-    </div>
+    </div>-->
   </article>
 
 

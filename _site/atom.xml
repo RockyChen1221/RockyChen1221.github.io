@@ -4,7 +4,7 @@
  <title>NoteBook</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-08-21T23:47:59+08:00</updated>
+ <updated>2019-08-29T11:26:37+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>rockychen</name>
@@ -23,7 +23,40 @@
 
 &lt;p&gt;ElasticSearch是一个基于&lt;a href=&quot;https://baike.baidu.com/item/Lucene/6753302&quot;&gt;Lucene&lt;/a&gt;的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于&lt;a href=&quot;https://baike.baidu.com/item/云计算/9969353&quot;&gt;云计算&lt;/a&gt;中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。&lt;/p&gt;
 
-&lt;h3 id=&quot;11-elk是什么&quot;&gt;1.1 ELK是什么&lt;/h3&gt;
+&lt;h3 id=&quot;11-与mysql的区别&quot;&gt;1.1 与MySQL的区别&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;ElasticSearch&lt;/th&gt;
+      &lt;th&gt;Mysql&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;索引（index）&lt;/td&gt;
+      &lt;td&gt;数据库（database）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;类型（type）&lt;/td&gt;
+      &lt;td&gt;表（table）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;列（field）&lt;/td&gt;
+      &lt;td&gt;属性/列（column）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;文档（document）&lt;/td&gt;
+      &lt;td&gt;数据（data）&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意事项： 不建议使用type 因为按照elastic search的计划后面的版本7.0以后会移除type&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;12-elk是什么&quot;&gt;1.2 ELK是什么&lt;/h3&gt;
 
 &lt;p&gt;ELK=elasticsearch+Logstash+kibana 
 elasticsearch：后台分布式存储以及全文检索 
@@ -31,7 +64,7 @@ logstash: 日志加工、“搬运工”
 kibana：数据可视化展示。 
 ELK架构为数据分布式存储、可视化查询和日志解析创建了一个功能强大的管理链。 三者相互配合，取长补短，共同完成分布式大数据处理工作。&lt;/p&gt;
 
-&lt;h3 id=&quot;12-前置条件&quot;&gt;1.2 前置条件&lt;/h3&gt;
+&lt;h3 id=&quot;13-前置条件&quot;&gt;1.3 前置条件&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;ES 5，安装需要 JDK 8 以上&lt;/li&gt;
@@ -122,7 +155,7 @@ network.host: 127.0.0.1 //绑定的IP地址，端口默认是9200
 
 &lt;p&gt;Window+Mac 集群配置&lt;/p&gt;
 
-&lt;p&gt;4.4.1. Windows (IP: 192.168.0.105)&lt;/p&gt;
+&lt;p&gt;4.4.1. Windows (IP: 192.168.0.105) (作为集群master)&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/posts/es/windows_yml.jpg&quot; alt=&quot;image-total&quot; height=&quot;auto&quot; width=&quot;780&quot; /&gt;&lt;/p&gt;
 
@@ -166,6 +199,9 @@ vi /etc/security/limits.conf
 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; hard nofile 65536
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;集群过程中机器需要双向互通&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;6--参阅&quot;&gt;6.  参阅&lt;/h2&gt;
@@ -174,7 +210,7 @@ vi /etc/security/limits.conf
 
 &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/makang110/article/details/80596017&quot;&gt;Elasticsearch学习&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;注：本文使用版本为5.6.16&lt;/p&gt;
+&lt;p&gt;注：本文使用版本为5.6.16，上面安装使用的是6.8.1，后面实际使用的是5.6.16，考虑到版本问题以及jdk,所以和公司保持一致&lt;/p&gt;
 
 </content>
  </entry>
