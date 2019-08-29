@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: "NoteBook"
 email: 'rockychen1221@163.com'
-description: "Better late than never"
+description: "记录自己在实践过程中遇到的困难，如内容能帮到您，实属荣幸"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://rockychen1221.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: 'rockychen1221'
