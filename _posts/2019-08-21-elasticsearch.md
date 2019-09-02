@@ -9,7 +9,7 @@ featured_image: ''
 project_link: ''
 button_icon: 'github'
 button_text: 'View'
-lead_text: 'ElasticSearch 使用记录(持续更新...)'
+lead_text: 'ElasticSearch是一个基于[Lucene](https://baike.baidu.com/item/Lucene/6753302)的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。'
 ---
 
 

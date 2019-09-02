@@ -1,0 +1,176 @@
+.
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── README.md
+├── _config.yml
+├── _includes
+│   ├── contact-modal.html
+│   ├── contact.html
+│   ├── content-left.html
+│   ├── content-main.html
+│   ├── content-right.html
+│   ├── featured-image.html
+│   ├── footer.html
+│   ├── header.html
+│   ├── home-hero.html
+│   ├── pagination.html
+│   └── post-content.html
+├── _layouts
+│   ├── default.html
+│   ├── home.html
+│   └── inner.html
+├── _plugins
+├── _posts
+│   ├── 2019-07-08-git.md
+│   ├── 2019-08-06-maven.md
+│   └── 2019-08-21-elasticsearch.md
+├── _sass
+│   ├── _bootstrap.scss
+│   ├── _mixins.scss
+│   └── bootstrap
+│       ├── _alerts.scss
+│       ├── _badges.scss
+│       ├── _breadcrumbs.scss
+│       ├── _button-groups.scss
+│       ├── _buttons.scss
+│       ├── _carousel.scss
+│       ├── _close.scss
+│       ├── _code.scss
+│       ├── _component-animations.scss
+│       ├── _dropdowns.scss
+│       ├── _forms.scss
+│       ├── _glyphicons.scss
+│       ├── _grid.scss
+│       ├── _input-groups.scss
+│       ├── _jumbotron.scss
+│       ├── _labels.scss
+│       ├── _list-group.scss
+│       ├── _media.scss
+│       ├── _mixins.scss
+│       ├── _modals.scss
+│       ├── _navbar.scss
+│       ├── _navs.scss
+│       ├── _normalize.scss
+│       ├── _pager.scss
+│       ├── _pagination.scss
+│       ├── _panels.scss
+│       ├── _popovers.scss
+│       ├── _print.scss
+│       ├── _progress-bars.scss
+│       ├── _responsive-embed.scss
+│       ├── _responsive-utilities.scss
+│       ├── _scaffolding.scss
+│       ├── _tables.scss
+│       ├── _theme.scss
+│       ├── _thumbnails.scss
+│       ├── _tooltip.scss
+│       ├── _type.scss
+│       ├── _utilities.scss
+│       ├── _variables.scss
+│       ├── _wells.scss
+│       └── mixins
+│           ├── _alerts.scss
+│           ├── _background-variant.scss
+│           ├── _border-radius.scss
+│           ├── _buttons.scss
+│           ├── _center-block.scss
+│           ├── _clearfix.scss
+│           ├── _forms.scss
+│           ├── _gradients.scss
+│           ├── _grid-framework.scss
+│           ├── _grid.scss
+│           ├── _hide-text.scss
+│           ├── _image.scss
+│           ├── _labels.scss
+│           ├── _list-group.scss
+│           ├── _nav-divider.scss
+│           ├── _nav-vertical-align.scss
+│           ├── _opacity.scss
+│           ├── _pagination.scss
+│           ├── _panels.scss
+│           ├── _progress-bar.scss
+│           ├── _reset-filter.scss
+│           ├── _reset-text.scss
+│           ├── _resize.scss
+│           ├── _responsive-visibility.scss
+│           ├── _size.scss
+│           ├── _tab-focus.scss
+│           ├── _table-row.scss
+│           ├── _text-emphasis.scss
+│           ├── _text-overflow.scss
+│           └── _vendor-prefixes.scss
+├── _site
+│   ├── 2019
+│   │   ├── 07
+│   │   │   └── 08
+│   │   │       └── git.html
+│   │   └── 08
+│   │       ├── 06
+│   │       │   └── maven.html
+│   │       └── 21
+│   │           └── elasticsearch.html
+│   ├── LICENSE
+│   ├── README.md
+│   ├── about
+│   │   └── index.html
+│   ├── atom.xml
+│   ├── books
+│   │   └── index.html
+│   ├── css
+│   │   ├── animate.min.css
+│   │   └── style.css
+│   ├── feed.xml
+│   ├── img
+│   │   ├── favicon.png
+│   │   ├── logo.png
+│   │   └── posts
+│   │       ├── es
+│   │       │   ├── mac.png
+│   │       │   ├── mac_logs.png
+│   │       │   ├── mac_nodes.png
+│   │       │   ├── mac_yml.png
+│   │       │   ├── windows.png
+│   │       │   ├── windows_logs.png
+│   │       │   ├── windows_nodes.png
+│   │       │   └── windows_yml.jpg
+│   │       └── logstash
+│   │           └── logstash-plugins.png
+│   ├── index.html
+│   ├── js
+│   │   ├── app.js
+│   │   └── wow.min.js
+│   ├── phantom.gemspec
+│   └── resume
+│       └── index.html
+├── about.md
+├── atom.xml
+├── books.md
+├── css
+│   ├── animate.min.css
+│   └── style.scss
+├── feed.xml
+├── img
+│   ├── favicon.png
+│   ├── logo.png
+│   └── posts
+│       ├── es
+│       │   ├── mac.png
+│       │   ├── mac_logs.png
+│       │   ├── mac_nodes.png
+│       │   ├── mac_yml.png
+│       │   ├── windows.png
+│       │   ├── windows_logs.png
+│       │   ├── windows_nodes.png
+│       │   └── windows_yml.jpg
+│       └── logstash
+│           └── logstash-plugins.png
+├── index.html
+├── js
+│   ├── app.js
+│   └── wow.min.js
+├── phantom.gemspec
+├── resume.md
+└── tree.text
+
+29 directories, 144 files

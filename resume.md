@@ -31,12 +31,12 @@ permalink: /resume/
 ## 自我评价/技能
 
 - 熟练jsp，servlet，ajax,jqeury,div+css ,html等web常用技术
-- ssi（strut2,spring,ibaties）实际运用和应用设计经验，熟悉spingmvc,mybatis等开源框架，看过部分源码
-- 熟练使用Oracle/Mysql等数据库软件和SQL语法；
-- 熟悉linux常用指令和应用部署环境准备，日常工作使用过windows,ubuntu，目前使用Mac OS X/Linux系统；
-- 了解移动端H5相关应用设计与开发技术(bootstrap,mui,htm5+等使用)；
-- 对金融业务PE投资(私募股权投资)业务过程了解和熟悉；
-- 自学能力和理解沟通能力强，喜欢尝试新的技术研究，很强的发现问题和独立解决问题的能力；
+- ssi（strut2,spring,ibaties）实际运用和应用设计经验，熟悉spingmvc,mybatis等开源框架
+- 熟练使用Oracle/Mysql等数据库软件和SQL语法
+- 熟悉linux常用指令和应用部署环境准备，日常工作使用过windows,ubuntu，目前使用Mac OS X/Linux系统
+- 了解移动端H5相关应用设计与开发技术(bootstrap,mui,htm5+等使用)
+- 对金融业务PE投资(私募股权投资)业务过程了解和熟悉
+- 自学能力和理解沟通能力强，喜欢尝试新的技术研究，很强的发现问题和独立解决问题的能力
 
 ## 工作经历
 
@@ -47,14 +47,17 @@ permalink: /resume/
 ##### 企业级投资管理平台/产品（2018.06-至今）
 
 - 项目介绍 ：
-  - 该项目的前身是公司企业级PE股权投资管理平台，通过重构，加上结合过往行业经验积累衍生出来的产品，包含（股权、债权、不动产、不良资产、基金、LP、GP、外部基金）等核心投资业务，底层使用Spring Boot，采用Maven模块化开发，支持按模块部署
+  - 该项目的前身是公司企业级PE股权投资管理平台，通过重构，加上结合过往行业经验积累衍生出来的产品，丰富了投资业务类型，包含（股权、债权、不动产、不良资产、基金、LP、GP、外部基金）等核心投资业务，底层使用Spring Boot，采用Maven模块化开发，支持按模块部署
 
 - 工作职责
   - 核心开发，参与产品功能日常维护和迭代升级
   - 参与产品功能需求分析以及Code Review
-  - 负责系统所有报表相关以及全局加/解密
+  - 负责系统所有报表、搜索相关以及全局加/解密
 
-##### 报表工具平台EasyReport（2018.12-2019.05）
+- 技术实现
+  - Spring Boot、Spring Security、Mybatis、Mysql、Redis、ElasticSearch、XXL-Job、Maven、Git、BootStrap
+
+##### 报表工具平台/EasyReport（2018.12-2019.05）
 
 - 项目介绍 ：
   - 基于开源项目[EasyReport](https://github.com/xianrendzw/EasyReport)基础上结合公司业务作出定制化开发，修改如下：
@@ -62,7 +65,7 @@ permalink: /resume/
   - 引入租户平台概念，多租户实现同系统的对接，数据相互隔离，增加接口访问签名验证和日志记录
   - 封装请求接口，支持嵌入其他系统，解决报表数据权限问题
   - 增加后台分页、排序 、行合并、小计、合计等，丰富报表查询条件，支持将报表作为查询条件使用，关联报表
-  - 增加自定义指标，和报表一对多，通过thymeleaf语法进行值替换，展现形式可自由组合，支持（表单、列表、图表），同时提供假数据预览，支持查询条件组合
+  - 增加自定义指标，和报表一对多，通过模板语言进行值替换，展现形式可自由组合，支持（表单、列表、图表），同时提供假数据预览，支持查询条件组合
   - 增加自定义报告，和指标一对多，可自由拖拉排序组合指标，即时预览，通过条件查询可以保存落地真实数据报告结果
   - 增加报告结果在线批注，可多人编辑报告，自动定位批注位置，支持带图表导出PDF（Pandoc）
   - 增加自定义变量，和报表一对多，通过获取报表的字段进行配置，得到需要展示的关键字列表
@@ -72,6 +75,11 @@ permalink: /resume/
   - 负责该平台日常维护和迭代
   - 协助公司项目团队人员进行业务培训和使用说明
 
+- 技术实现
+  - Spring Boot、Apache Shiro、Mybatis、Mysql、EasyPoi、Pandoc、Maven、Git、Thymeleaf、EasyUI
+
+---
+
 #### 项目组（2016.04-2018.06）
 
 ##### 企业级PE股权投资管理平台/项目（2016.04-2018.06）
@@ -79,15 +87,18 @@ permalink: /resume/
 - 项目介绍
   - 为国内各大私募股权投资(PE)机构/公司提供项目投资管理软件
   - 以投资数据为中心，集募、投、管、退于一体的投资管理软件。平台覆盖投资项目全生命周期，包含业务流程管理、项目管理、基金运作管理、LP管理、项目估值，风险警示以及绩效管理等模块功能，协助各类投资管理机构实现多层次、多环节投资过程监控和管理，确保募、投、管、退四个核心管理环节和业务类型，在统一战略下实现可控运营和管控。
-  - 先后根据企业各自不同投资业务完成了[阳光融汇资本投资管理有限公司](http://www.riverheadcapital.cn/)、[联想控股股份有限公司](http://www.legendholdings.com.cn/)、[山东省鲁信投资控股集团有限公司](https://www.luxin.cn/)、[国投创业投资管理有限公司](https://www.sdicvc.com/)等投资管理软件的开发建设
+  - 根据企业各自不同投资业务先后完成了[阳光融汇资本投资管理有限公司](http://www.riverheadcapital.cn/)、[联想控股股份有限公司](http://www.legendholdings.com.cn/)、[山东省鲁信投资控股集团有限公司](https://www.luxin.cn/)、[国投创业投资管理有限公司](https://www.sdicvc.com/)等投资管理软件的开发建设
 
 - 工作职责
   - 甲方业务对接负责人，项目小组长，负责项目建设从需求到运维全过程
 
+- 技术实现
+  - Spring MVC、Struts2、Ibatis、Oracle、SVN
+
 ## 技能熟练度
 
-- ★★☆ Java/Git/ElasticSearch
-- ★★★ MySQL
+- ★★☆ Java/Git/ElasticSearch/Echarts
+- ★★☆ MySQL
 - ★★☆ Redis/Linux/Mac OS X
 - ★☆☆ Go/Docker
 
