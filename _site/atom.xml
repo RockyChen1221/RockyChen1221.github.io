@@ -4,13 +4,112 @@
  <title>NoteBook</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-09-10T22:03:49+08:00</updated>
+ <updated>2019-09-10T22:18:42+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>rockychen</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Logstash同步MySQL数据到ElasticSearch</title>
+   <link href="http://localhost:4000/2019/09/10/logstash-mysql.html"/>
+   <updated>2019-09-10T05:15:00+08:00</updated>
+   <id>http://localhost:4000/2019/09/10/logstash-mysql</id>
+   <content type="html">&lt;h2 id=&quot;使用logstash同步mysql数据到elasticsearch&quot;&gt;使用Logstash同步MySQL数据到ElasticSearch&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;这里选择用logstash同步&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;安装 jdbc 和 elasticsearch 插件，在解压后的logstash目录中执行&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/logstash-plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;logstash-input-jdbc //在高版本自带有input-jdbc插件
+bin/logstash-plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;logstash-output-elasticsearch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;此处需要关闭VPN等服务，否则报I/O exception (java.net.SocketException) 443：Operation timed out (Read failed)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/logstash/logstash-plugins.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;进入logstash/config目录，新增一个文件，内容如下&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;input &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  jdbc &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;demo&quot;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#△&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# mysql相关jdbc配置&lt;/span&gt;
+    jdbc_connection_string &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jdbc:mysql://192.168.1.187:3306/demo?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false&quot;&lt;/span&gt;
+    jdbc_user &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;demo&quot;&lt;/span&gt;
+    jdbc_password &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;demo&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# jdbc连接mysql驱动的文件目录，可去官网下载:https://dev.mysql.com/downloads/connector/j/&lt;/span&gt;
+    jdbc_driver_library &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mysql-conn/mysql-connector-java-5.1.48.jar&quot;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# the name of the driver class for mysql&lt;/span&gt;
+    jdbc_driver_class &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;com.mysql.jdbc.Driver&quot;&lt;/span&gt;
+    jdbc_paging_enabled &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+    &lt;/span&gt;jdbc_page_size &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;50000&quot;&lt;/span&gt;
+
+    jdbc_default_timezone &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Asia/Shanghai&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# mysql文件, 也可以直接写SQL语句在此处，如下：&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# statement =&amp;gt; &quot;select * from ei_invest_base_info where d_update_time &amp;gt; :sql_last_value&quot;&lt;/span&gt;
+    statement_filepath &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mysql-conn/sync.sql&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# 这里类似crontab,可以定制定时操作，比如每分钟执行一次同步(分 时 天 月 年)&lt;/span&gt;
+    schedule &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;* * * * *&quot;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#type =&amp;gt; &quot;jdbc&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# 是否记录上次执行结果, 如果为真,将会把上次执行到的 tracking_column 字段的值记录下来,保存到 last_run_metadata_path 指定的文件中&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#record_last_run =&amp;gt; true&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# 是否需要记录某个column 的值,如果record_last_run为真,可以自定义我们需要 track 的 column 名称，此时该参数就要为 true. 否则默认 track 的是 timestamp 的值.&lt;/span&gt;
+    use_column_value &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# 如果 use_column_value 为真,需配置此参数. track 的数据库 column 名,该 column 必须是递增的. 一般是mysql主键&lt;/span&gt;
+    tracking_column &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;d_update_time&quot;&lt;/span&gt;
+
+    tracking_column_type &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;timestamp&quot;&lt;/span&gt;
+
+    last_run_metadata_path &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./mysql-conn/demo_sync_last_id&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# 是否清除 last_run_metadata_path 的记录,如果为真那么每次都相当于从头开始查询所有的数据库记录&lt;/span&gt;
+    clean_run &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;#是否将 字段(column) 名称转小写&lt;/span&gt;
+    lowercase_column_names &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+output &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]==&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;demo&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  elasticsearch &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    hosts &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;127.0.0.1:9200&quot;&lt;/span&gt;
+    index &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;demo&quot;&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;# index&lt;/span&gt;
+    document_type &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;info&quot;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 分类&lt;/span&gt;
+    document_id &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;%{id}&quot;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# 此处的ID为SQL中需要用作标识的列&lt;/span&gt;
+    template_overwrite &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;# 这里输出调试，正式运行时可以注释掉&lt;/span&gt;
+  stdout &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      codec &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; json_lines
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：需要修改的地方为&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;回到Logstash根目录，执行&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/logstash -f config/新增文件名&lt;/code&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>大佬们眼中的马云</title>
