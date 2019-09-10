@@ -2,9 +2,9 @@
 layout: inner
 position: right
 title: 'Logstash同步MySQL数据到ElasticSearch'
-date: 2019-09-09 21:15:00
+date: 2019-09-09 19:15:00
 categories: development
-tags: Logstash
+tags: Logstash MySQL ElasticSearch
 featured_image: '/img/posts/01_bloc-jams-angular-1130x864-2x.png'
 project_link: ''
 button_icon: 'github'
