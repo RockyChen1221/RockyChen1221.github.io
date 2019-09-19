@@ -4,13 +4,49 @@
  <title>NoteBook</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-09-10T22:47:59+08:00</updated>
+ <updated>2019-09-19T19:29:34+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>rockychen</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>杭州三日游</title>
+   <link href="http://localhost:4000/2019/09/14/hangzhou.html"/>
+   <updated>2019-09-14T03:15:00+08:00</updated>
+   <id>http://localhost:4000/2019/09/14/hangzhou</id>
+   <content type="html">&lt;h2 id=&quot;杭州三日游&quot;&gt;杭州三日游&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;出发前大概看了下攻略，先是高德地图上标星，确定了大概的点后，选择最佳路线，全程是即兴发挥，指哪去哪&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;人物介绍&quot;&gt;人物介绍&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;小Z: 小学同学，现居杭州（本次游玩落脚点）&lt;/li&gt;
+  &lt;li&gt;小S: 高中同学，现居海宁&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;day-1&quot;&gt;Day 1&lt;/h3&gt;
+&lt;h4 id=&quot;上海-杭州-梦想小镇&quot;&gt;上海-》杭州-》梦想小镇&lt;/h4&gt;
+&lt;p&gt;我的车次是19点35分，到杭州是21点10分，算上地铁大概是22点10分的样子小Z接到了我，然后带我去了附近的梦想小镇，夜景很漂亮，江南风十足&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/hangzhou/dream.png&quot; alt=&quot;image-dream&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/mac/brew_tree.png&quot; alt=&quot;image-20190830183834428&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;day-2&quot;&gt;Day 2&lt;/h3&gt;
+&lt;h4 id=&quot;钱塘江-金庸故居-西湖&quot;&gt;钱塘江-》金庸故居-》西湖&lt;/h4&gt;
+&lt;p&gt;吃早餐的时候无意发现了钱塘江8.18观潮节，查了下正好中秋前后是最佳时间，小S正好在海宁，于是和小Z定下了今天的出行目的地，上午驱车前往盐官，观看钱塘江大潮
+和小S碰面后，三人一起观看完大潮，送小S回住所，三人吃完午饭，一起参观了金庸故居，然后驱车回杭州，大约下午16点落点西湖，
+步行了1/3的路程，骑行1/3到雷峰塔位置，登塔后骑行剩余的1/3回到停车场&lt;/p&gt;
+
+&lt;h3 id=&quot;day-3&quot;&gt;Day 3&lt;/h3&gt;
+&lt;h4 id=&quot;西溪湿地-阿里巴巴亲橙里-艺创小镇凤凰创意国际-宋城-云栖竹径-浙江大学之江校区-城市阳台&quot;&gt;西溪湿地-》阿里巴巴（亲橙里）-》艺创小镇凤凰创意国际-》宋城-》云栖竹径-》浙江大学之江校区-》城市阳台&lt;/h4&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Logstash同步MySQL数据到ElasticSearch</title>
