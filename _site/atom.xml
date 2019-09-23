@@ -4,7 +4,7 @@
  <title>NoteBook</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-09-23T21:44:19+08:00</updated>
+ <updated>2019-09-23T22:15:54+08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>rockychen</name>
@@ -30,15 +30,21 @@
 
 &lt;h3 id=&quot;day-1&quot;&gt;Day 1&lt;/h3&gt;
 &lt;h4 id=&quot;上海-杭州-梦想小镇&quot;&gt;上海-》杭州-》梦想小镇&lt;/h4&gt;
-&lt;p&gt;我的车次是19点35分，到杭州是21点10分，算上地铁大概是22点10分的样子小Z接到了我，然后带我去了附近的梦想小镇，夜景很漂亮，江南风十足&lt;/p&gt;
+&lt;p&gt;我的车次是19点35分，到杭州是21点10分，算上地铁大概是22点10分的样子小Z接到了我，然后带我去了附近的梦想小镇，夜景很漂亮，江南风十足
+&lt;img src=&quot;/img/posts/hangzhou/day01/dream.png&quot; alt=&quot;hangzhou&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;day-2&quot;&gt;Day 2&lt;/h3&gt;
 &lt;h4 id=&quot;钱塘江-金庸故居-西湖&quot;&gt;钱塘江-》金庸故居-》西湖&lt;/h4&gt;
 &lt;p&gt;吃早餐的时候无意发现了钱塘江8.18观潮节，查了下正好中秋前后是最佳时间，小S正好在海宁，于是和小Z定下了今天的出行目的地，上午驱车前往盐官，观看钱塘江大潮
 和小S碰面后，三人一起观看完大潮，送小S回住所，三人吃完午饭，一起参观了金庸故居，然后驱车回杭州，大约下午16点落点西湖，
-步行了1/3的路程，骑行1/3到雷峰塔位置，登塔后骑行剩余的1/3回到停车场&lt;/p&gt;
+傍晚时分的西湖伴随着微风吹过湖面带来拂面的凉爽，此处上自拍
+&lt;img src=&quot;/img/posts/hangzhou/day02/my.png&quot; alt=&quot;hangzhou&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;傍晚时分的西湖伴随着微风吹过湖面带来&lt;/p&gt;
+&lt;p&gt;步行了1/3的路程，&lt;/p&gt;
+&lt;video src=&quot;/img/posts/hangzhou/day02/IMG_4575.mp4&quot; height=&quot;180&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;
+
+&lt;p&gt;骑行1/3到雷峰塔位置，登塔后骑行剩余的1/3回到停车场&lt;/p&gt;
+&lt;video src=&quot;/img/posts/hangzhou/day02/IMG_4575.mp4&quot; height=&quot;180&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;
 
 &lt;h3 id=&quot;day-3&quot;&gt;Day 3&lt;/h3&gt;
 &lt;h4 id=&quot;西溪湿地-阿里巴巴亲橙里-艺创小镇凤凰创意国际-宋城-云栖竹径-浙江大学之江校区-城市阳台&quot;&gt;西溪湿地-》阿里巴巴（亲橙里）-》艺创小镇凤凰创意国际-》宋城-》云栖竹径-》浙江大学之江校区-》城市阳台&lt;/h4&gt;
@@ -329,8 +335,8 @@ output &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
 &lt;p&gt;“他投身慈善事业后，我相信会在过程中有很多新的收获，也会更加理解中国背景下的慈善事业。我希望他能把铸就阿里巴巴成功的新思维、新能量带到慈善行业中来。”&lt;/p&gt;
 
-&lt;h2 id=&quot;后记&quot;&gt;后记&lt;/h2&gt;
-&lt;p&gt;作为一个95后，隐约见证了Jack Ma的商业帝国逐步形成，印象中2012年办的银行卡，然后开通的淘宝，再到后面的阿里动物园，我生活在中国互联网飞速发展的时期，阿里享受着国家人口、互联网、政策等的红利，通过这20年构建了一个庞大的集团企业
+&lt;p&gt;&lt;strong&gt;后记&lt;/strong&gt;
+作为一个95后，隐约见证了Jack Ma的商业帝国逐步形成，印象中2012年办的银行卡，然后开通的淘宝，再到后面的阿里动物园，我生活在中国互联网飞速发展的时期，阿里享受着国家人口、互联网、政策等的红利，通过这20年构建了一个庞大的集团企业
 也成功将中国数字经济化、互联网提升到国际前沿水平，阿里巴巴在中国逐渐成为了技术人员所向往的圣地，102年的阿里已经是个20出头的小伙子了，希望在往后的日子能带给社会更多变革，便利人们的生活方式，加油。最后，教师节快乐！马老师节日快乐！&lt;/p&gt;
 
 </content>
