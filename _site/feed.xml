@@ -5,15 +5,15 @@
     <description>记录自己在实践过程中遇到的困难，如内容能帮到您，实属荣幸</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 23 Sep 2019 22:15:54 +0800</pubDate>
-    <lastBuildDate>Mon, 23 Sep 2019 22:15:54 +0800</lastBuildDate>
+    <pubDate>Thu, 26 Sep 2019 22:42:26 +0800</pubDate>
+    <lastBuildDate>Thu, 26 Sep 2019 22:42:26 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>杭州三日游</title>
         <description>&lt;h2 id=&quot;杭州三日游&quot;&gt;杭州三日游&lt;/h2&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;出发前大概看了下攻略，先是高德地图上标星，确定了大概的点后，选择最佳路线，全程是即兴发挥，指哪去哪&lt;/p&gt;
+  &lt;p&gt;出发前大概看了下攻略，先是高德地图上标星，确定了大概的点后，选择当日游玩最佳路线，全程即兴发挥，指哪去哪&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;人物介绍&quot;&gt;人物介绍&lt;/h2&gt;
@@ -23,22 +23,22 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;day-1&quot;&gt;Day 1&lt;/h3&gt;
-&lt;h4 id=&quot;上海-杭州-梦想小镇&quot;&gt;上海-》杭州-》梦想小镇&lt;/h4&gt;
-&lt;p&gt;我的车次是19点35分，到杭州是21点10分，算上地铁大概是22点10分的样子小Z接到了我，然后带我去了附近的梦想小镇，夜景很漂亮，江南风十足
-&lt;img src=&quot;/img/posts/hangzhou/day01/dream.png&quot; alt=&quot;hangzhou&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;梦想小镇&quot;&gt;梦想小镇&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;梦想小镇
+我的车次是19点35分，到杭州是21点10分，算上地铁大概是22点10分的样子小Z接到了我，因为离住的地方不远，然后带我去了附近的梦想小镇，夜景很漂亮，江南风十足&lt;img src=&quot;/img/posts/hangzhou/day01/dream.png&quot; alt=&quot;hangzhou&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;day-2&quot;&gt;Day 2&lt;/h3&gt;
 &lt;h4 id=&quot;钱塘江-金庸故居-西湖&quot;&gt;钱塘江-》金庸故居-》西湖&lt;/h4&gt;
-&lt;p&gt;吃早餐的时候无意发现了钱塘江8.18观潮节，查了下正好中秋前后是最佳时间，小S正好在海宁，于是和小Z定下了今天的出行目的地，上午驱车前往盐官，观看钱塘江大潮
-和小S碰面后，三人一起观看完大潮，送小S回住所，三人吃完午饭，一起参观了金庸故居，然后驱车回杭州，大约下午16点落点西湖，
-傍晚时分的西湖伴随着微风吹过湖面带来拂面的凉爽，此处上自拍
-&lt;img src=&quot;/img/posts/hangzhou/day02/my.png&quot; alt=&quot;hangzhou&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;步行了1/3的路程，&lt;/p&gt;
-&lt;video src=&quot;/img/posts/hangzhou/day02/IMG_4575.mp4&quot; height=&quot;180&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;
-
-&lt;p&gt;骑行1/3到雷峰塔位置，登塔后骑行剩余的1/3回到停车场&lt;/p&gt;
-&lt;video src=&quot;/img/posts/hangzhou/day02/IMG_4575.mp4&quot; height=&quot;180&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;
+&lt;ul&gt;
+  &lt;li&gt;钱塘江
+吃早餐的时候无意发现了钱塘江8.18观潮节，查了下正好中秋前后是最佳时间，小S正好在海宁，于是和小Z定下了今天的出行目的地，上午驱车前往盐官，和小S碰面后，观看钱塘江大潮（央视全程直播）&lt;img src=&quot;/img/posts/hangzhou/day02/钱塘江大潮.png&quot; alt=&quot;hangzhou&quot; /&gt;
+三人一起观看完大潮，送小S回住所，三人吃完午饭，一起参观了金庸故居，先生留下的武侠文化经典和著作，怪不得马老师总喜欢和先生西湖论剑，然后驱车回杭州，大约下午16点落点西湖&lt;/li&gt;
+  &lt;li&gt;西湖
+傍晚时分的西湖伴随着微风带来惬意的凉爽，步行了1/3的路程，此处上自拍，手动狗头&lt;img src=&quot;/img/posts/hangzhou/day02/my.png&quot; alt=&quot;hangzhou&quot; /&gt;
+骑行1/3到雷峰塔位置&lt;img src=&quot;/img/posts/hangzhou/day02/雷峰塔.png&quot; alt=&quot;hangzhou&quot; /&gt;登塔后观赏了西湖的夜景，骑行剩余的1/3吃过饭回到停车场结束当天行程，途径南山路，马路周围的梧桐装饰了灯光，夜景很美&lt;video src=&quot;/img/posts/hangzhou/day02/IMG_4602.MP4&quot; height=&quot;220&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;day-3&quot;&gt;Day 3&lt;/h3&gt;
 &lt;h4 id=&quot;西溪湿地-阿里巴巴亲橙里-艺创小镇凤凰创意国际-宋城-云栖竹径-浙江大学之江校区-城市阳台&quot;&gt;西溪湿地-》阿里巴巴（亲橙里）-》艺创小镇凤凰创意国际-》宋城-》云栖竹径-》浙江大学之江校区-》城市阳台&lt;/h4&gt;
@@ -46,27 +46,25 @@
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;西溪湿地
-西溪湿地分为收费园区和免费园区，我们前往的是免费区域，&lt;/p&gt;
+西溪湿地分为收费园区和免费园区，我们前往的是免费区域，一小时不到的时间就可以走完，中间有个大气球，颜色和天空还挺搭的&lt;img src=&quot;/img/posts/hangzhou/day03/大气球.png&quot; alt=&quot;大气球&quot; /&gt;登上河渚塔可以俯视西溪且留下&lt;img src=&quot;/img/posts/hangzhou/day03/西溪.jpg&quot; alt=&quot;西溪且留下&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;阿里巴巴（亲橙里）
-为了去体验阿里的黑科技，顺便吃饭&lt;/p&gt;
+为了去体验阿里的黑科技，顺便吃饭&lt;img src=&quot;/img/posts/hangzhou/day03/阿里巴巴.png&quot; alt=&quot;阿里巴巴&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;艺创小镇凤凰创意国际
 前身是个水泥厂，后续改造成一个创业孵化基地，保留了矿坑和水泥厂原始风貌，听说趁着阴天和色调，可以拍出冰岛的感觉，
-看完下山准备前往下一个地点时，
-遇到一个小姐姐问我小冰岛在哪，我说什么地方，她男朋友说就是有座山，下面有个湖，我瞬间就懂了，然后指着方向告诉怎么走，
-后面和小Z笑了半天，果然男人还是直白…&lt;/p&gt;
+看完下山准备前往下一个地点时，遇到一个小姐姐问我小冰岛在哪，我说什么地方，她男朋友说就是有座山，下面有个湖，我瞬间就懂了，然后指着方向告诉怎么走，
+后面和小Z笑了半天，果然男人还是直白…&lt;img src=&quot;/img/posts/hangzhou/day03/艺创.png&quot; alt=&quot;艺创&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;宋城
-艺创结束后前往浙大，小Z说可以途径宋城，便稍作了下停留，门票是和演出一块的，大概是300来块，加上演出没什么兴趣，玩的话会打乱后面的计划，就没有进去了，只是路过…&lt;/p&gt;
+艺创结束后前往浙大，小Z说可以途径宋城，便稍作了下停留，门票是和演出一块的，大概是300来块，加上对演出没什么兴趣，玩的话会打乱后面的计划，就没有进去了，只是路过…&lt;img src=&quot;/img/posts/hangzhou/day03/宋城.png&quot; alt=&quot;宋城&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;云栖竹径
-听说是个网红地点，主要是有一颗树独立于田野之上，再加上水泥道路横穿，还是有点意境的，由于停车位满了，只好和其他人一样停在路边，然后顺着指示牌前往，到了售票处买了2张票(8元一张)，然后就开始了爬山之旅…
-道路两侧都是竹子，走到分叉口时，路牌指示右侧是一个财神庙，这时候默契开始了，两个人相视而笑，于是开始了虔诚的朝圣（求财）之旅，带着满满的诚意&lt;/p&gt;
+听说是个网红地点，主要是有一颗树独立于田野之上，再加上水泥道路横穿，还是有点意境的&lt;img src=&quot;/img/posts/hangzhou/day03/云溪竹径.png&quot; alt=&quot;云溪竹径&quot; /&gt;由于停车位满了，只好和其他人一样停在路边，然后顺着指示牌前往，到了售票处买了2张票(8元一张)，然后就开始了爬山之旅…道路两侧都是竹子，走到分叉口时，路牌指示右侧是一个财神庙，这时候默契开始了，两个人相视而笑，于是开始了虔诚的朝圣（求财）之旅，&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;浙江大学之江校区
@@ -74,12 +72,12 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;城市阳台
-到附近找停车位，结果一个小哥哥说下班了，你们随便找个地方停就好，免费！Nice，后面停在了华夏银行楼下，然后顺着地图前往城市阳台，到了钱塘江沿江风光带后，对面已有部分灯光，包括一个像莲花一样的建筑，感觉是个体育馆，顺着人流来到了城市阳台，一看居然还有前排位置，立马静静的趴在护栏上吹着风架好手机等待着19.30分灯光秀的到来，临近开始，随着周围人越来越少，两人一脸问号，互相怀疑，到底是看江哪边？？？，后面跟着人群来到了一个还不错的中间位置，两侧灯光都能顾及到，首先是展示了很多国家的国旗，&lt;/p&gt;
+到达附近后寻找停车位，结果一个小哥哥说下班了，你们随便找个地方停就好，免费！Nice，后面停在了华夏银行楼下，然后顺着地图前往城市阳台，到了钱塘江沿江风光带后，对面已有部分灯光，包括一个像莲花一样的建筑，感觉是个体育馆，顺着人流来到了城市阳台，一看居然还有前排位置，立马静静的趴在护栏上吹着风架好手机等待着19.30分灯光秀的到来，临近开始，随着周围人越来越少，两人一脸问号，互相怀疑，到底是看江哪边？？？，后面跟着人群来到了一个还不错的中间位置，两侧灯光都能顾及到，首先是展示了很多国家的国旗，五星红旗居中，然后出现有江南水墨画、熊猫、孙悟空、迪士尼卡通等诸多动画灯光秀，效果很绚丽&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;最后以钱江新城灯光秀结束本次旅程，也以此庆祝新中国成立成立70周年&lt;/p&gt;
 &lt;video src=&quot;/img/posts/hangzhou/day03/278.MP4&quot; height=&quot;180&quot; controls=&quot;controls&quot;&gt;&lt;/video&gt;
-
 </description>
         <pubDate>Sat, 14 Sep 2019 03:15:00 +0800</pubDate>
         <link>http://localhost:4000/2019/09/14/hangzhou.html</link>
