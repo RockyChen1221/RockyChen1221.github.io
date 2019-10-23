@@ -1,0 +1,261 @@
+<!doctype html>
+<head>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+
+  <title>Cron时间表达式 - RockyChen</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RockyChen - Better late than never." href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="RockyChen - Better late than never." href="http://localhost:4000/atom.xml">
+
+  <!-- Favicons -->
+  <link rel="icon" href="http://localhost:4000/img/favicon.png">
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700|Merriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/animate.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="">
+
+<div class="main container" id="top">
+
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">rockychen</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+                <li>
+                  <a href="/">Home</a>
+                </li>
+              
+                <li>
+                  <a href="/books">Books</a>
+                </li>
+              
+                <li>
+                  <a href="/about">About</a>
+                </li>
+              
+            </ul>
+          </div>
+      </div>
+  </nav>
+  
+
+
+  <article class="markdown-body entry-content p-3 p-md-6">
+
+
+	<h2 id="cron时间表达式">Cron时间表达式</h2>
+
+<h3 id="1-简介">1. 简介</h3>
+<p>Cron表达式的使用格式是：秒 分 时 日 月 周 年(可选)，每个占位的使用规则如下：</p>
+
+<h3 id="2-字段取值范围">2. 字段取值范围</h3>
+<p>　　字段可以包含任何允许的值，以及该字段允许的特殊字符的各种组合。字段如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>字段名称</th>
+      <th>强制性</th>
+      <th>允许的值</th>
+      <th>允许的特殊字符</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>秒</td>
+      <td>是</td>
+      <td>0-59</td>
+      <td>， - * /</td>
+    </tr>
+    <tr>
+      <td>分钟</td>
+      <td>是</td>
+      <td>0-59</td>
+      <td>， - * /</td>
+    </tr>
+    <tr>
+      <td>小时</td>
+      <td>是</td>
+      <td>0-23</td>
+      <td>， - * /</td>
+    </tr>
+    <tr>
+      <td>日</td>
+      <td>是</td>
+      <td>1-31</td>
+      <td>， - *？/ LW</td>
+    </tr>
+    <tr>
+      <td>月</td>
+      <td>是</td>
+      <td>1-12或JAN-DEC</td>
+      <td>， - * /</td>
+    </tr>
+    <tr>
+      <td>星期</td>
+      <td>是</td>
+      <td>1-7或SUN-SAT</td>
+      <td>- *？/ L＃</td>
+    </tr>
+    <tr>
+      <td>年</td>
+      <td>否</td>
+      <td>空，1970-2099</td>
+      <td>， - * /</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>注意</p>
+</blockquote>
+
+<p>1、星期里，1表示的是星期天，2表示的是星期一，以此类推，7表示的是星期六</p>
+
+<p>2、？只存在于某天或某星期中，且不能同时存在(还不支持同时指定某天和星期)</p>
+
+<p>3、’L’和’W’字符也可以在日期字段中组合以产生’LW’，这转换为“最后一个工作日”</p>
+
+<p>4、法定字符以及月份和星期的名称不区分大小写，如MON 与mon相同</p>
+
+<p>5、一定要注意设置时间zone</p>
+
+<h3 id="3-特殊字符">3. 特殊字符</h3>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>字符	含义	使用范围	描述	举例
+*	所有值	所有字段	用于选择字段中的所有值	分钟字段中的 * 表示每分钟
+-	用于指定范围	所有字段	指定当前时间段位置上的一个时间范围	小时字段中的10-12表示10到12内的小时数，即小时10,11和12这三个值
+，	多个指定的值	所有字段	多个指定的值以逗号隔开	星期几字段中的MON,WED,FRI表示 星期一，星期三和星期五
+/	指定增量	所有字段	左边是开始触发时间，右边是每隔固定时间触发一次事件	秒字段中的5/15表示 秒 5,20,35和50；也可直接/20，相当于在'/'之前有'0'，即表示0,20,40
+?	没有特定值，不关心该字段的值	日，星期	需要在允许该字符的两个字段之一中指定某些内容而在另一个字段中则不需要时非常有用	某月的某个特定日期（例如，第10天）触发，但不关心恰好在一周的哪一天，星期几字段中可放置？
+L	last，允许的两个字段的每一个中具有不同的含义	日，星期	日期字段中的值L表示月份的最后一天,在星期几字段中单独使用，则仅表示7或SAT	还可以指定从该月的最后一天开始的偏移量，例如L-3，这意味着该月的倒数第三天
+W	work，用于指定最接近给定日期的工作日（周一至周五）	日	前后和当前最接近工作日的那天，如当天是工作日则当天触发，且不会跳过一个月的边界	指定15W作为日期字段的值，则含义为：最接近该月的15日的工作日；若指定“1W”作为日期的值，并且第1个是星期六，则将在当月的3号触发
+#	指定当月的第几个星期几	星期	指定当月的第几个星期几	星期几字段中的6#3的值表示该月的第三个星期五（第6天=星期五，＃3=该月份的第3个星期五）
+</code></pre></div></div>
+<h3 id="4-常见的cron表达式示例">4. 常见的Cron表达式示例：</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"30 * * * * ?"                      每半分钟触发任务  
+"30 10 * * * ?"                     每小时的10分30秒触发任务  
+"30 10 1 * * ?"                     每天1点10分30秒触发任务  
+"30 10 1 20 * ?"                    每月20号1点10分30秒触发任务  
+"30 10 1 20 10 ? *"                 每年10月20号1点10分30秒触发任务  
+"30 10 1 20 10 ? 2011"              2011年10月20号1点10分30秒触发任务  
+"30 10 1 ? 10 * 2011"               2011年10月每天1点10分30秒触发任务  
+"30 10 1 ? 10 SUN 2011"             2011年10月每周日1点10分30秒触发任务  
+"15,30,45 * * * * ?"                每15秒，30秒，45秒时触发任务  
+"15-45 * * * * ?"                   15到45秒内，每秒都触发任务  
+"15/5 * * * * ?"                    每分钟的每15秒开始触发，每隔5秒触发一次  
+"15-30/5 * * * * ?"                 每分钟的15秒到30秒之间开始触发，每隔5秒触发一次  
+"0 0/3 * * * ?"                     每小时的第0分0秒开始，每三分钟触发一次  
+"0 15 10 ? * MON-FRI"               星期一到星期五的10点15分0秒触发任务  
+"0 15 10 L * ?"                     每个月最后一天的10点15分0秒触发任务  
+"0 15 10 LW * ?"                    每个月最后一个工作日的10点15分0秒触发任务  
+"0 15 10 ? * 5L"                    每个月最后一个星期四的10点15分0秒触发任务  
+"0 15 10 ? * 5#3"                   每个月第三周的星期四的10点15分0秒触发任务  
+"0/2 * * * * ?"                     表示每2秒 执行任务
+"0 0/2 * * * ?"                     表示每2分钟 执行任务
+"0 0 2 1 * ?"                       表示在每月的1日的凌晨2点调整任务
+"0 15 10 ? * MON-FRI"               表示周一到周五每天上午10:15执行作业
+"0 15 10 ? 6L 2002-2006"            表示2002-2006年的每个月的最后一个星期五上午10:15执行作
+"0 0 10,14,16 * * ?"                每天上午10点，下午2点，4点 
+"0 0/30 9-17 * * ?"                 朝九晚五工作时间内每半小时 
+"0 0 12 ? * WED"                    表示每个星期三中午12点 
+"0 0 12 * * ?"                      每天中午12点触发 
+"0 15 10 ? * *"                     每天上午10:15触发 
+"0 15 10 * * ?"                     每天上午10:15触发 
+"0 15 10 * * ?"                     每天上午10:15触发 
+"0 15 10 * * ? 2005"                2005年的每天上午10:15触发 
+"0 * 14 * * ?"                      在每天下午2点到下午2:59期间的每1分钟触发 
+"0 0/5 14 * * ?"                    在每天下午2点到下午2:55期间的每5分钟触发 
+"0 0/5 14,18 * * ?"                 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 
+"0 0-5 14 * * ?"                    在每天下午2点到下午2:05期间的每1分钟触发 
+"0 10,44 14 ? 3 WED"                每年三月的星期三的下午2:10和2:44触发 
+"0 15 10 ? * MON-FRI"               周一至周五的上午10:15触发 
+"0 15 10 15 * ?"                    每月15日上午10:15触发 
+"0 15 10 L * ?"                     每月最后一日的上午10:15触发 
+"0 15 10 ? * 6L"                    每月的最后一个星期五上午10:15触发 
+"0 15 10 ? * 6L 2002-2005"          2002年至2005年的每月的最后一个星期五上午10:15触发 
+"0 15 10 ? * 6#3"                   每月的第三个星期五上午10:15触发
+</code></pre></div></div>
+
+<blockquote>
+  <p>附上<a href="http://www.bejson.com/othertools/cron/">在线Cron表达式生成器</a></p>
+</blockquote>
+
+
+    <!--<div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          
+
+        </div>
+      </div>
+    </div>-->
+  </article>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-2 col-md-offset-1">
+            <p class="text-muted text-left "><a href="http://localhost:4000">© 2019 rockychen</a></p>
+          </div>
+
+          <div class="col-xs-12 col-md-6 col-md-offset-2">
+            <a class="section-jump" href="#top">
+              <i class="fa fa-angle-up fa-3x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .main.container -->
+
+    <!-- JavaScript -->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/js/wow.min.js"></script>
+    <script src="http://localhost:4000/js/app.js"></script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', ' UA-9999999-99', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    </body>
+</html>
+
