@@ -19,6 +19,7 @@ permalink: /books/
    - Java 8 函数式编程
    - Spring Boot 实战（Java EE开发的颠覆者）
    - Head First 设计模式
+   - 墨菲定律
 
 ### 计划
    - 深入理解Java虚拟机（JVM高级特性与最佳实践）第2版
@@ -30,5 +31,4 @@ permalink: /books/
    - 羊皮卷
    - 鬼谷子
    - 狼道
-   - 墨菲定律
 
