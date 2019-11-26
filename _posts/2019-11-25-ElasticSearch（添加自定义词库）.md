@@ -4,14 +4,13 @@ position: right
 title: 'ElasticSearch（添加自定义词库）'
 date: 2019-11-25 11:21:00
 categories: development
-tags: Jdk
+tags: ElasticSearch IK分词器
 featured_image: '/img/posts/01_bloc-jams-angular-1130x864-2x.png'
 project_link: ''
 button_icon: 'github'
 button_text: 'View'
 lead_text: '在进行中文搜索的时候，一般常用的使用`IK分词器`，但对于一些场景下的分词搜索结果并不太满意，原因是词库的数据不完整，所以需要添加自定义词库'
 ---
-
 
 [TOC]
 
